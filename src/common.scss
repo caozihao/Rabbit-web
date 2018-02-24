@@ -1,0 +1,74 @@
+// sangyiming
+// $color_primary:coral;
+$color_primary:#00add2;
+$base:64px;
+$page_width:1080px;
+$sm:8px;
+$md:16px;
+$lg:24px;
+$inputHeight:40px;
+$inputFontSize:14px;
+.commonPage {
+  width: 80%;
+  min-width: $page_width;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 300%; // padding-left: 32px;
+  color: $color_primary;
+}
+
+.inputStyle {
+  height: $inputHeight;
+  line-height: $inputHeight;
+  font: {
+    size: $inputFontSize;
+  }
+}
+
+.bg_img {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 50% 50%;
+}
+
+//caozihao
+.clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  } // * html & {
+  //   height: 1px
+  // }
+}
+
+.text-center {
+  text-align: center
+}
+
+.text-left {
+  text-align: left
+}
+
+.text-right {
+  text-align: right
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.width-100 {
+  width: 100%
+}

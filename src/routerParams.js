@@ -9,13 +9,13 @@ export default [
     path: '/',
     models: () => [
       ...commonModels()],
-    page: () => import('./routes/IndexPage.jsx'),
+    page: () => import('./routes/main/MainContainer.jsx'),
   },
-  {
-    path: '/products',
-    models: () => [
-      ...commonModels(),
-    ],
-    page: () => import('./routes/Products.jsx'),
-  },
+  // {
+  //   path: '/products',
+  //   models: () => [
+  //     ...commonModels(),
+  //   ],
+  //   page: () => import('./routes/Products.jsx'),
+  // },
 ];

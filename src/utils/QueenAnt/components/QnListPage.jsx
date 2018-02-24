@@ -6,7 +6,7 @@ import QnTable from './QnTable';
 import QnFilter from './QnFilter';
 import QnFormModal from './QnFormModal';
 import QnTableWithSummary from './QnTableWithSummary';
-import { Link } from 'react-router';
+import { Link } from 'dva/router';
 
 
 const TabPane = Tabs.TabPane;

@@ -1,0 +1,43 @@
+.UserNav {
+  color: #fff;
+  text-align: center;
+  button {
+    background: #6b6b6b !important;
+    border-color: #6b6b6b !important;
+    color: #fff!important;
+    &:hover {
+      color: #fff;
+    }
+  }
+  .username {
+    position: relative;
+    top: -2px;
+  }
+  .ant-badge {
+    display: initial;
+    .ant-badge-dot {
+      top: -48px;
+      left: 49px;
+    }
+  }
+}
+
+.pop-nav {
+  margin: 0 10px;
+  p {
+    margin: 5px 0;
+    &.text {
+      margin: 10px 0;
+      text-align: center;
+      a {
+        &:hover {
+          color: red
+        }
+      }
+    }
+  }
+}
+
+.ant-popover-title {
+  min-width: initial!important;
+}
