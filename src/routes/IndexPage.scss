@@ -1,4 +1,3 @@
-
 .normal {
   font-family: Georgia, sans-serif;
   margin-top: 3em;
@@ -26,4 +25,11 @@
 
 .list code {
   background: #f7f7f7;
+}
+
+$base:64px;
+$page_width:1080px;
+.commonPage {
+  width: $page_width;
+  font-size: $base;
 }
