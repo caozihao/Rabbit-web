@@ -11,11 +11,18 @@ export default [
       ...commonModels()],
     page: () => import('./routes/main/MainContainer.jsx'),
   },
-  // {
-  //   path: '/products',
-  //   models: () => [
-  //     ...commonModels(),
-  //   ],
-  //   page: () => import('./routes/Products.jsx'),
-  // },
+  {
+    path: '/find',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/find/MainContainer.jsx'),
+  },
+  {
+    path: '/receive',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/receive/MainContainer.jsx'),
+  },
 ];

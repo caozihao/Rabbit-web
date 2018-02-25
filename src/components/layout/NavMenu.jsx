@@ -23,13 +23,13 @@ class NavMenu extends Component {
 
   genMenuItems(data) {
     let menus = [];
-
     if (Array.isArray(data) && data.length > 0) {
       menus = data.map((m) => {
         return (
-          <Menu.Item key={m.path} >
-            <Link to={m.path}>{m.title}</Link>
-          </Menu.Item>);
+          <Menu.Item key={m.path} className={m.highLight ? 'default-active' : ''} >
+            <Link to={m.path}> {m.title} </Link>
+          </Menu.Item >);
+
       });
     }
     return menus;
@@ -37,7 +37,7 @@ class NavMenu extends Component {
 
   render() {
     return (<Menu
-      theme="dark"
+      style={{ background: "#00add2" }}
       mode="horizontal"
       defaultSelectedKeys={[this.props.selectedKey]}
       className="NavMenu"

@@ -1,1 +1,14 @@
-.NavMenu {}
+@import '../../common.scss';
+.NavMenu {
+  &.ant-menu-horizontal {
+    .ant-menu-item-selected,
+    .ant-menu-item-active {
+      background-color: $hightlight;
+    }
+  }
+}
+
+.default-active {
+  background: #FBC02D !important;
+  border-bottom: 1px solid #FBC02D !important;
+}

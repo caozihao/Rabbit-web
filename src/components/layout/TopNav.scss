@@ -1,1 +1,26 @@
-.TopNav {}
+@import '../../common.scss';
+.TopNav {
+  width: $page_width;
+  margin: 0 auto;
+  height: 64px;
+  >div {
+    text-align: center;
+  }
+  a {
+    color: #fff;
+  }
+  .logo {
+    background-image: url(../../assets/logo.png);
+    @extend .fit-image-size;
+    background-size: auto 70%;
+    display: inline-block;
+    width: 60px;
+    height: 64px;
+    position: absolute;
+  }
+  .title {
+    color: #fff;
+    font-size: 24px;
+    margin-left: 60px;
+  }
+}

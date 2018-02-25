@@ -4,6 +4,7 @@ import { Layout, LocaleProvider } from 'antd';
 import { utils } from '../../utils/QueenAnt/qnUtils';
 import TopNav from '../../components/layout/TopNav.jsx';
 import CommonFooter from './CommonFooter.jsx';
+import './MainLayout.scss';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -28,15 +29,13 @@ class MainLayout extends Component {
   }
   render() {
     return (
-      <LocaleProvider >
-        <Layout className="MainLayout" >
-          <Header className="header" >
-            <TopNav location={this.props.location} />
-          </Header>
-          <Content>{this.state.children}</Content>
-          {this.props.footer || <CommonFooter />}
-        </Layout>
-      </LocaleProvider>
+      <Layout className="MainLayout">
+        <Header style={{ background: "#00add2" }} >
+          <TopNav location={this.props.location} />
+        </Header>
+        <Content>{this.state.children}</Content>
+        {this.props.footer || <CommonFooter />}
+      </Layout>
     );
   }
 }

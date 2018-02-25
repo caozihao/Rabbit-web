@@ -1,15 +1,19 @@
 .UserNav {
   color: #fff;
   text-align: center;
-  button {
-    background: #6b6b6b !important;
-    border-color: #6b6b6b !important;
-    color: #fff!important;
-    &:hover {
-      color: #fff;
+  >ul {
+    line-height: 64px;
+    li {
+      &.ant-menu-item {
+        margin-top: -2px;
+      }
+      a {
+        color: #fff !important;
+      }
     }
   }
   .username {
+    cursor: pointer;
     position: relative;
     top: -2px;
   }
@@ -39,5 +43,5 @@
 }
 
 .ant-popover-title {
-  min-width: initial!important;
+  min-width: initial !important;
 }

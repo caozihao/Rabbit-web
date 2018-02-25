@@ -16,7 +16,7 @@ class MainPage extends Component {
   render() {
     return (
       <div>
-        寻物
+        招领
     </div>)
   }
 }
