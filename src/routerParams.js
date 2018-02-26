@@ -16,13 +16,13 @@ export default [
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/find/MainContainer.jsx'),
+    page: () => import('./routes/find/FindContainer.jsx'),
   },
   {
     path: '/receive',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/receive/MainContainer.jsx'),
+    page: () => import('./routes/receive/ReceiveContainer.jsx'),
   },
 ];

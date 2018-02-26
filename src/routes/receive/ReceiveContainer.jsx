@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Layout } from 'antd';
-import MainPage from './MainPage.jsx';
-import MainFooter from '../../components/main/MainFooter.jsx';
+import ReceivePage from './ReceivePage.jsx';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 
@@ -22,7 +21,7 @@ class MainContainer extends Component {
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <MainPage />
+        <ReceivePage />
       </MainLayout>
     );
   }

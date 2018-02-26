@@ -104,6 +104,6 @@ UserNav.PropTypes = {
   location: PropTypes.string,
 };
 UserNav.defaultProps = {
-
+  location: ""
 };
 export default connect()(UserNav);

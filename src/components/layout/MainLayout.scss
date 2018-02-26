@@ -1,7 +1,7 @@
 @import '../../common.scss';
 .MainLayout {
-  .header {
+  .main-content {
     width: $page_width;
-    margin: 0 auto;
+    margin: $md auto 0 auto;
   }
 }

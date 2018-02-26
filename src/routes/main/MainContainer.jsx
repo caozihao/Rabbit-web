@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Layout } from 'antd';
 import MainPage from './MainPage.jsx';
-import MainFooter from '../../components/main/MainFooter.jsx';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 

@@ -4,6 +4,7 @@ import { Layout, LocaleProvider } from 'antd';
 import { utils } from '../../utils/QueenAnt/qnUtils';
 import TopNav from '../../components/layout/TopNav.jsx';
 import CommonFooter from './CommonFooter.jsx';
+import HeadCarousel from './HeadCarousel.jsx';
 import './MainLayout.scss';
 
 
@@ -33,7 +34,10 @@ class MainLayout extends Component {
         <Header style={{ background: "#00add2" }} >
           <TopNav location={this.props.location} />
         </Header>
-        <Content>{this.state.children}</Content>
+        <div className="main-content">
+          <HeadCarousel />
+          <Content>{this.state.children}</Content>
+        </div>
         {this.props.footer || <CommonFooter />}
       </Layout>
     );

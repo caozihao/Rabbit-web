@@ -1,0 +1,16 @@
+@import '../../common.scss';
+.HeadCarousel {
+  .slick-slide {
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+    background: #364d79;
+    overflow: hidden;
+    img {
+      @extend .fit-image-size;
+    }
+  }
+  .slick-slide h3 {
+    color: #fff;
+  }
+}
