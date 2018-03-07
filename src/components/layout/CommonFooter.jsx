@@ -16,7 +16,7 @@ class CommonFooter extends Component {
     return (
       <Footer type="dark" className="CommonFooter" >
         <div className="content">
-          底部
+
         </div>
       </Footer>
     );

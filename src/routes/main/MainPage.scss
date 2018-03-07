@@ -1,4 +1,13 @@
 @import '../../common.scss';
 .MainPage {
   margin-top: $md;
+  .main-content{
+     margin-top: $md;
+     >div.ant-col-12{
+       width:49.25%;
+      &:first-child {
+        margin-right: 1.5%;
+      }
+     }
+  }
 }
