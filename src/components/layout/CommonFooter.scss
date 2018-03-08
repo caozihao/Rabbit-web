@@ -1,1 +1,18 @@
 
+@import '../../common.scss';
+
+.CommonFooter{
+  background-color: #404040;
+  .content {
+    color: #efefef; // height: 50px;
+    text-align: center;
+    a {
+      margin-right: 10px;
+    }
+  }
+}
+
+
+
+
+

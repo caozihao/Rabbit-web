@@ -1,5 +1,6 @@
 @import '../../common.scss';
 .NavMenu {
+  background: $colorPrimary;
   &.ant-menu-horizontal {
     .ant-menu-item-selected,
     .ant-menu-item-active {

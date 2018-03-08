@@ -8,8 +8,8 @@ export default {
   //   "template": "./src/index.ejs"
   // },
   "theme": {
-    "@primary-color": "#FB7D55",
-    // "@primary-color": "#14B9C8",
+    // "@primary-color": "#FB7D55",
+    "@primary-color": "#14B9C8",
   },
   "extraBabelPlugins": [
     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]

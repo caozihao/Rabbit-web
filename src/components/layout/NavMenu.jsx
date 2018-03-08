@@ -37,7 +37,6 @@ class NavMenu extends Component {
 
   render() {
     return (<Menu
-      style={{ background: "#00add2" }}
       mode="horizontal"
       defaultSelectedKeys={[this.props.selectedKey]}
       className="NavMenu"

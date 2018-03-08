@@ -31,13 +31,14 @@ class MainLayout extends Component {
   render() {
     return (
       <Layout className="MainLayout">
-        <Header style={{ background: "#00add2" }} >
+        <Header >
           <TopNav location={this.props.location} />
         </Header>
         <div className="main-content">
           <HeadCarousel />
           <Content>{this.state.children}</Content>
         </div>
+        <div className="app"/>
         {this.props.footer || <CommonFooter />}
       </Layout>
     );
