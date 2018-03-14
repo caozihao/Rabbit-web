@@ -17,11 +17,9 @@ class MainPage extends Component {
       "张梦雪于2018-03-04 22:15认领了丢失皮夹子",
       "张梦雪于2018-03-04 22:15认领了丢失皮夹子",
     ]
-    let data1 = <p><b>张梦雪</b>于<b>2018-03-04 22:15</b>认领了<b>丢失皮夹子</b></p>
-    let data2 = <p><b>张梦雪</b>于<b>2018-03-04 22:15</b>发布了<b>丢了一个皮夹子</b></p>
 
     let dataSource = [];
-    for (let i = 0;i < 10;i ++){
+    for (let i = 0; i < 10; i++) {
       dataSource.push({
         key: i,
         title: '丢失了一个皮夹子',
@@ -55,19 +53,19 @@ class MainPage extends Component {
             <Card hoverable title="失物招领" extra={<a href="#">查看更多</a>}>
               <Table
                 rowKey={"key"}
-              dataSource={dataSource}
-              columns={columns}
-              pagination = {false}/>
+                dataSource={dataSource}
+                columns={columns}
+                pagination={false} />
             </Card>
           </Col>
 
           <Col span={12}  >
             <Card hoverable title="寻物启事" extra={<a href="#">查看更多</a>}>
               <Table
-              rowKey={"key"}
-              dataSource={dataSource}
-              columns={columns}
-              pagination={false} />
+                rowKey={"key"}
+                dataSource={dataSource}
+                columns={columns}
+                pagination={false} />
             </Card>
           </Col>
 

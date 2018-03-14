@@ -16,13 +16,6 @@ export default [
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/find/FindContainer.jsx'),
-  },
-  {
-    path: '/receive',
-    models: () => [
-      ...commonModels(),
-    ],
-    page: () => import('./routes/receive/ReceiveContainer.jsx'),
+    page: () => import('./routes/goods/FindContainer.jsx'),
   },
 ];

@@ -10,6 +10,7 @@
 }
 
 .default-active {
-  background: #12A7B4 !important;
-  border-bottom: 1px solid #12A7B4 !important;
+  background: $chooseColorPrimary !important;
+  border-bottom: 1px solid $chooseColorPrimary !important;
+
 }
