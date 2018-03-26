@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Layout } from 'antd';
-import Page from './list/Page';
+import Page from './detail/Page';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 
@@ -21,7 +21,7 @@ class MainContainer extends Component {
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <Page pageType="find" />
+        <Page />
       </MainLayout>
     );
   }

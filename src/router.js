@@ -20,7 +20,6 @@ function genRoute(item, app) {
 }
 
 function RouterConfig({ history }) {
-
   const routes = routeItems.map((item) => {
     return genRoute(item);
   });

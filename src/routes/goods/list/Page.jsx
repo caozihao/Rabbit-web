@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Card, Table, Row, Col, Select, DatePicker, Input } from 'antd';
+import { Link } from 'dva/router';
 import "./Page.scss";
 
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
@@ -29,12 +30,13 @@ class MainPage extends Component {
   render() {
 
     let dataSource = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i <= 100; i++) {
       dataSource.push({
+        id: i,
         key: i,
-        title: '丢失了一个皮夹子',
-        category: "钱包",
-        lost_palce: "图书馆",
+        title: `丢失了一个皮夹子_${i}`,
+        category: `钱包_${i}`,
+        lost_palce: `图书馆_${i}`,
         image_url: " - ",
         time: "2018-03-07 22:47",
       })
@@ -44,6 +46,12 @@ class MainPage extends Component {
       title: '标题',
       dataIndex: 'title',
       key: 'title',
+      render: (text, record) => {
+        console.log('text->', text);
+        console.log('record->', record);
+        return (
+          <Link to={`/detail/${record.id}`}>{text}</Link>)
+      }
     },
     {
       title: '时间',
@@ -104,11 +112,12 @@ class MainPage extends Component {
         </Card>
         <Card className="table-list">
           <Table
-          dataSource={dataSource}
-          columns={columns} />
-        < /Card>)
+            dataSource={dataSource}
+            columns={columns} />
+        </Card>)
     </div>)
-    }}
+  }
+}
 
 MainPage.PropTypes = {};
 MainPage.defaultProps = {};

@@ -22,7 +22,6 @@ class HeadCarousel extends Component {
       carousel_4_img,
     ];
     let carouselImgData = imgArr.map((v, i) => {
-      console.log('i ->', i);
       return <div key={i}><img src={v} alt={i} /></div>
     })
 

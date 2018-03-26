@@ -21,7 +21,7 @@ class MainContainer extends Component {
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <Page pageType="find" />
+        <Page pageType="receive" />
       </MainLayout>
     );
   }

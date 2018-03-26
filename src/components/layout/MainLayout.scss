@@ -1,16 +1,16 @@
 @import '../../common.scss';
 .MainLayout {
-  .ant-layout-header{
+  min-width: $pageWidth;
+  .ant-layout-header {
     background: $colorPrimary;
   }
-
   .main-content {
     width: $pageWidth;
     margin: $md auto 0 auto;
   }
   .app {
     width: 100%;
-    margin-top:$md;
+    margin-top: $md;
     width: 100%;
     @extend .fit-image-size;
     background-image: url(../../assets/app.png);
