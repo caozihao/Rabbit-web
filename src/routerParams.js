@@ -32,4 +32,11 @@ export default [
     ],
     page: () => import('./routes/goods/DetailContainer.jsx'),
   },
+  {
+    path: '/release',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/goods/ReleaseContainer.jsx'),
+  },
 ];

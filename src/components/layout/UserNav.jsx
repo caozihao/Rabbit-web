@@ -65,9 +65,7 @@ class UserNav extends Component {
     if (!this.state.userInfo) {
       const popContent = (
         <div className="pop-nav">
-          <p className="text"><Link to="/user/publish">我发布的</Link></p>
-          <p className="text"><Link to="/user/receive">我领取的</Link></p>
-          <p className="text"><Link to="/user/info">账户管理</Link></p>
+          <p className="text"><Link to="/user/release">我发布的</Link></p>
           <p className="text"><a onClick={this.logout}>退出登录</a></p>
         </div>);
       // const username = this.state.username;

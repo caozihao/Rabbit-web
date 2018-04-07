@@ -90,7 +90,7 @@ class MainPage extends Component {
           </Form>
 
           <div className="form-bottom">
-            <Button type="primary">我要领取</Button>
+            <Button type="primary">已领取</Button>
           </div>
 
         </Card>
