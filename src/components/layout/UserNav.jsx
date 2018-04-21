@@ -11,9 +11,8 @@ class UserNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userInfo: utils.getUserInfo(),
-      username: utils.getUserInfo() ? (utils.getUserInfo().nickName ? utils.getUserInfo().nickName : utils.getUserInfo().mobile) : '',
-      walletDom: [],
+      userInfo: utils.getUserInfo() ? utils.getUserInfo() : ''
+
     };
   }
   componentDidMount() {
@@ -61,15 +60,18 @@ class UserNav extends Component {
   render() {
     let content = '';
     let data = [];
-    const pathname = this.props.location.pathname;
-    if (!this.state.userInfo) {
+    const { userInfo } = this.state;
+    const { location } = this.props;
+
+    const pathname = location.pathname;
+    if (userInfo) {
       const popContent = (
         <div className="pop-nav">
           <p className="text"><Link to="/user/release">我发布的</Link></p>
           <p className="text"><a onClick={this.logout}>退出登录</a></p>
         </div>);
-      // const username = this.state.username;
-      const username = "张梦雪";
+      const username = userInfo.username;
+
       content = (<div>
         <Row>
           <Col span={12}>
@@ -80,14 +82,14 @@ class UserNav extends Component {
         </Row>
       </div>);
     } else {
-      if (pathname === '/signup') {
+      if (pathname === '/regist') {
         data.push({ title: '登录', path: '/login' });
       } else if (pathname === '/login') {
-        data.push({ title: '注册', path: '/signup' });
+        data.push({ title: '注册', path: '/regist' });
       } else {
         data = [
           { title: '登录', path: '/login' },
-          { title: '注册', path: '/signup' },
+          { title: '注册', path: '/regist' },
         ];
       }
       content = <NavMenu menuData={data} />;

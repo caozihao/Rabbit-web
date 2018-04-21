@@ -1,21 +1,23 @@
 import dva from 'dva';
 import './common.scss';
+import { hashHistory } from 'dva/router';
 
 // 1. Initialize
 const app = dva({
-  initialState: {
-    products: [
-      { name: 'dva', id: 1 },
-      { name: 'antd', id: 2 },
-    ],
+  history: hashHistory,
+  onError(e) {
+    // message.error(e.message, ERROR_MSG_DURATION);
   },
+
 });
+
+
 
 // 2. Plugins
 // app.use({});
 
 // 3. Model
-app.model(require('./models/products').default);
+// app.model();
 
 // 4. Router
 app.router(require('./router').default);

@@ -1,3 +1,6 @@
-export default {
-  host: 'http://localhost/'
+
+const host = '/rabbitApi'
+
+export {
+  host,
 };

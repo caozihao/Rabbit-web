@@ -95,6 +95,13 @@ class MainPage extends Component {
       <div className="goods-detail-page">
         <Card hoverable>
           <Form className="goods-form">
+
+            <FormItem
+              {...formItemLayout}
+              label={<b>标题 </b>}
+            >
+              <Input />
+            </FormItem>
             <FormItem
               {...formItemLayout}
               label={<b>发布者 </b>}

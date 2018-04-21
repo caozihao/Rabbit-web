@@ -1,12 +1,9 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
-// import IndexPage from './routes/IndexPage';
-// import Products from './routes/Products';
 import dynamic from 'dva/dynamic';
 import routeItems from './routerParams';
 
 function genRoute(item, app) {
-
   if (item) {
     const { path, models, page } = item;
     const component = dynamic({
@@ -16,12 +13,11 @@ function genRoute(item, app) {
     });
     return (<Route key={path} exact path={path} component={component} />);
   }
-
 }
 
-function RouterConfig({ history }) {
+function RouterConfig({ history, app }) {
   const routes = routeItems.map((item) => {
-    return genRoute(item);
+    return genRoute(item, app);
   });
 
   return (
@@ -31,7 +27,6 @@ function RouterConfig({ history }) {
       </Switch>
     </Router>
   );
-
 }
 
 export default RouterConfig;

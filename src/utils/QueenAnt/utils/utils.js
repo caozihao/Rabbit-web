@@ -1,6 +1,6 @@
 import { message, notification } from 'antd';
 import pathToRegexp from 'path-to-regexp';
-import constants from '../../../config/constants';
+import constants from '../../../config/constant';
 import md5 from 'md5';
 
 const setItem = (key, value) => {
@@ -13,7 +13,6 @@ const getItem = (key) => {
 
 const logOut = () => {
   window.localStorage.removeItem(constants.storage.userInfo);
-  window.localStorage.removeItem(constants.storage.coinTypes);
 };
 
 const clearItem = (key) => {

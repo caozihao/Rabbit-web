@@ -48,7 +48,7 @@ class MainPage extends Component {
           />
         </Card>
 
-        <Row className="main-content">
+        <Row className="content">
           <Col span={12}  >
             <Card hoverable title="失物招领" extra={<a href="#">查看更多</a>}>
               <Table

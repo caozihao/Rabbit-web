@@ -1,10 +1,29 @@
 
 const commonModels = () => {
   return [
+    import('./models/user/user.js'),
   ];
 };
 
 export default [
+  {
+    path: '/',
+    models: () => [
+      ...commonModels()],
+    page: () => import('./routes/main/MainContainer.jsx'),
+  },
+  {
+    path: '/regist',
+    models: () => [
+      ...commonModels()],
+    page: () => import('./routes/regist/RegistContainer.jsx'),
+  },
+  {
+    path: '/login',
+    models: () => [
+      ...commonModels()],
+    page: () => import('./routes/login/LoginContainer.jsx'),
+  },
   {
     path: '/',
     models: () => [

@@ -1,19 +1,26 @@
 @import '../../common.scss';
 .MainLayout {
   min-width: $pageWidth;
+  min-height: $content_height;
   .ant-layout-header {
     background: $colorPrimary;
+    min-height: $top_height;
   }
   .main-content {
-    width: $pageWidth;
-    margin: $md auto 0 auto;
+    padding: $md;
+    min-width: $pageWidth;
+    min-height: $content_height - $top_height - $bottom_height;
   }
   .app {
-    width: 100%;
+    padding-bottom: $lg;
+    /*     width: 100%;
     margin-top: $md;
     width: 100%;
     @extend .fit-image-size;
     background-image: url(../../assets/app.png);
-    height: 245px;
+    height: 245px; */
+  }
+  .CommonFooter {
+    min-height: $bottom_height;
   }
 }

@@ -1,14 +1,16 @@
 $colorPrimary: #14B9C8;
 $chooseColorPrimary:#12A7B4;
 $base:64px;
-$pageWidth:1080px;
+$pageWidth: 1080px;
 $sm:8px;
 $md:16px;
 $lg:24px;
 $inputHeight:40px;
 $inputFontSize:14px;
 $hightlight:rgba(10, 226, 236, 0.529412);
-
+$content_height:100vh;
+$top_height:8.8vh;
+$bottom_height:9.4vh;
 .fit-image-size {
   background-repeat: no-repeat;
   background-size: auto 100%;

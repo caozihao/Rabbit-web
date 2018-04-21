@@ -29,16 +29,19 @@ class MainLayout extends Component {
     return props.children;
   }
   render() {
+
+    const { needHeadCarousel } = this.props;
+
     return (
       <Layout className="MainLayout">
+
         <Header >
           <TopNav location={this.props.location} />
         </Header>
         <div className="main-content">
-          <HeadCarousel />
+          {needHeadCarousel ? <HeadCarousel /> : ''}
           <Content>{this.state.children}</Content>
         </div>
-        <div className="app"/>
         {this.props.footer || <CommonFooter />}
       </Layout>
     );
@@ -46,6 +49,6 @@ class MainLayout extends Component {
 }
 MainLayout.PropTypes = {};
 MainLayout.defaultProps = {
-
+  needHeadCarousel: true
 };
 export default MainLayout;

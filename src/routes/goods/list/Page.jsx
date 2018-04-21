@@ -114,8 +114,8 @@ class MainPage extends Component {
           <Table
             dataSource={dataSource}
             columns={columns} />
-        </Card>)
-    </div>)
+        </Card>
+      </div>)
   }
 }
 
