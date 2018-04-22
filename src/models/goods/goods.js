@@ -1,12 +1,12 @@
 // import { message } from 'antd';
 import common from '../../utils/QueenAnt/utils/commonEffect';
-import service from '../../services/user';
+import service from '../../services/goods';
 
 export default {
-  namespace: 'user',
+  namespace: 'goods',
   state: {
     loading: false,
-    userInfo: ''
+    list: ''
   },
   reducers: {
     save(state, action) {
@@ -22,11 +22,10 @@ export default {
   effects: {
     common,
     //---------------------------------------
-    *regist(action, { put }) {
+    *create(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
-      function success(json) {
-        1
 
+      function success(json) {
         if (resolve && typeof resolve === 'function') {
           resolve(json);
         }
@@ -35,18 +34,17 @@ export default {
           payload: {},
         };
       }
-
       yield put({
         type: 'common',
         payload: {
           method: 'POST',
-          url: service.regist,
+          url: service.create,
           queryParams,
           success,
         },
       });
     },
-    *login(action, { put }) {
+    *getById(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
 
       function success(json) {
@@ -63,14 +61,14 @@ export default {
       yield put({
         type: 'common',
         payload: {
-          method: 'POST',
-          url: service.login,
+          method: 'GET',
+          url: service.getById,
           queryParams,
           success,
         },
       });
     },
-    *logout(action, { put }) {
+    *getListByOffset(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
 
       function success(json) {
@@ -86,8 +84,8 @@ export default {
       yield put({
         type: 'common',
         payload: {
-          method: 'POST',
-          url: service.logout,
+          method: 'GET',
+          url: service.getListByOffset,
           queryParams,
           success,
         },

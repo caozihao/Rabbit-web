@@ -1,30 +1,10 @@
 @import '../../../common.scss';
-.goods-detail-page {
-  .title {
-    text-align: center;
-  }
+.goods-release-page {
   .goods-picture {
     width: 300px;
   }
-  .title-brief {
-    li {
-      list-style: none;
-      float: left;
-      width: 33.33%;
-      text-align: center;
-      font-size: 12px;
-    }
-    width: 100%;
-    border-bottom: 1px solid grey;
-    padding-bottom: 10px;
-    margin-bottom: 50px;
-  }
-  .goods-form {
-    border-bottom: 1px solid grey;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-  }
-  .form-bottom {
-    text-align: center;
+  .submit-panel {
+    padding-top: $md;
+    border-top: 1px solid $lineColor;
   }
 }

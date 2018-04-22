@@ -46,11 +46,11 @@ const getCoinType = () => {
   return coinType;
 };
 
-
 const saveUserInfo = (userInfo) => {
   const USR_INFO = constants.storage.userInfo;
   setItem(USR_INFO, JSON.stringify(userInfo));
 };
+
 const isLogin = () => {
   return !!getUserInfo();
 };

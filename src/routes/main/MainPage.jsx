@@ -39,7 +39,7 @@ class MainPage extends Component {
 
 
     return (
-      <div className="MainPage">
+      <div className="MainPage com-margin-top">
 
         <Card hoverable title="最新动态">
           <List
@@ -48,7 +48,7 @@ class MainPage extends Component {
           />
         </Card>
 
-        <Row className="content">
+        <Row className="content com-margin-top">
           <Col span={12}  >
             <Card hoverable title="失物招领" extra={<a href="#">查看更多</a>}>
               <Table

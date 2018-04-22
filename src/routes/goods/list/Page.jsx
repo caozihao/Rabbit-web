@@ -3,14 +3,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Card, Table, Row, Col, Select, DatePicker, Input } from 'antd';
 import { Link } from 'dva/router';
+import enumerateConstant from '../.././../config/enumerateConstant';
 import "./Page.scss";
 
+const { goodsType } = enumerateConstant;
 const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
 const Option = Select.Option;
 
-class MainPage extends Component {
+class GoodsListPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      goodsTypeOption: []
+    }
   }
 
   componentDidMount() {
@@ -26,6 +31,17 @@ class MainPage extends Component {
   handleChangeRangePicker = (e) => {
 
   }
+
+  getGoodsType = () => {
+    let goodsTypeOption = [];
+    for (let i in goodsType) {
+      goodsTypeOption.push(
+        <Option key={i} value={i}>{goodsType[i]}</Option>
+      )
+    }
+    return goodsTypeOption;
+  }
+
 
   render() {
 
@@ -47,8 +63,6 @@ class MainPage extends Component {
       dataIndex: 'title',
       key: 'title',
       render: (text, record) => {
-        console.log('text->', text);
-        console.log('record->', record);
         return (
           <Link to={`/detail/${record.id}`}>{text}</Link>)
       }
@@ -74,8 +88,10 @@ class MainPage extends Component {
       key: 'image_url',
     }];
 
+    const goodsOption = this.getGoodsType();
+
     return (
-      <div className="goods-list-page">
+      <div className="goods-list-page com-margin-top">
         <Card hoverable title="筛选条件">
           <Row>
             <Col span={12}>失物类别：
@@ -85,19 +101,7 @@ class MainPage extends Component {
                 optionFilterProp={"children"}
                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                 onChange={this.handleChangeSelect}>
-
-                <Option value="1">钱包</Option>
-                <Option value="2">手机</Option>
-                <Option value="3">钥匙</Option>
-                <Option value="4">宠物</Option>
-                <Option value="5">卡类/证照</Option>
-                <Option value="6">数码产品</Option>
-                <Option value="7">手袋/挎包</Option>
-                <Option value="8">衣服/鞋帽</Option>
-                <Option value="9">首饰/挂饰</Option>
-                <Option value="10">行李/包裹</Option>
-                <Option value="11">书籍/文件</Option>
-                <Option value="12">行其他</Option>
+                {goodsOption}
               </Select>
             </Col>
             <Col span={12}>丢失时间：<RangePicker placeholder={["请输入起始日期", "请输出截止日期"]} onChange={this.handleChangeRangePicker} />
@@ -110,7 +114,7 @@ class MainPage extends Component {
             </Col>
           </Row>
         </Card>
-        <Card className="table-list">
+        <Card className="table-list com-margin-top">
           <Table
             dataSource={dataSource}
             columns={columns} />
@@ -119,6 +123,6 @@ class MainPage extends Component {
   }
 }
 
-MainPage.PropTypes = {};
-MainPage.defaultProps = {};
-export default connect()(MainPage);
+GoodsListPage.PropTypes = {};
+GoodsListPage.defaultProps = {};
+export default connect()(GoodsListPage);

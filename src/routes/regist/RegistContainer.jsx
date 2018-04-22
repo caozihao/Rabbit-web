@@ -4,7 +4,7 @@ import { message } from 'antd';
 import { routerRedux } from 'dva/router';
 import RegistPage from './RegistPage';
 import MainLayout from '../../components/layout/MainLayout.jsx';
-
+import utils from '../../utils/QueenAnt/utils/utils';
 
 class MainContainer extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ class MainContainer extends Component {
   componentWillReceiveProps(nextProps) { }
 
   regist = (values) => {
-    console.log('2 values ->', values);
     const P = new Promise((resolve, reject) => {
       this.props.dispatch({
         type: "user/regist",
@@ -29,7 +28,8 @@ class MainContainer extends Component {
 
     P.then((json) => {
       message.success('注册成功');
-      this.props.dispatch(routerRedux.push('/'));
+      utils.saveUserInfo();
+      this.props.dispatch(routerRedux.push('/login'));
     })
   }
 

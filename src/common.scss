@@ -1,5 +1,6 @@
 $colorPrimary: #14B9C8;
 $chooseColorPrimary:#12A7B4;
+$lineColor:#e7e7e7;
 $base:64px;
 $pageWidth: 1080px;
 $sm:8px;
@@ -11,6 +12,10 @@ $hightlight:rgba(10, 226, 236, 0.529412);
 $content_height:100vh;
 $top_height:8.8vh;
 $bottom_height:9.4vh;
+.com-margin-top {
+  margin-top: $md;
+}
+
 .fit-image-size {
   background-repeat: no-repeat;
   background-size: auto 100%;
@@ -26,6 +31,12 @@ $bottom_height:9.4vh;
     clear: both;
     visibility: hidden;
   }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-center {

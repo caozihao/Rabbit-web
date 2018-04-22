@@ -32,7 +32,7 @@ class LoginPage extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // this.props.Logine(values);
+        this.props.login(values);
       }
     });
   }
@@ -44,7 +44,7 @@ class LoginPage extends Component {
       <div className="LoginPage">
         <Card
           className="card"
-          title="注册"
+          title="登录"
           hoverable={true}>
           <Form onSubmit={this.handleSubmit} >
             <FormItem>
@@ -54,6 +54,7 @@ class LoginPage extends Component {
                   {
                     required: true, message: commonRules.requireMessage('require', '手机号'),
                   },
+                  commonRules.validate('phone'),
                 ],
               })(
                 <Input
@@ -81,7 +82,7 @@ class LoginPage extends Component {
 
             <FormItem>
               <Button style={{ width: '100%' }} type="primary" htmlType="submit" className="login-form-button">
-                登陆
+                登录
               </Button>
             </FormItem>
 

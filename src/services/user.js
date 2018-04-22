@@ -2,11 +2,11 @@ import { host } from '../config/config';
 
 export default {
   // 注册
-  regist: `${host}/user/front_regist`,
+  regist: `${host}/user/regist`,
   // 登录
-  login: `${host}/user/front_login`,
+  login: `${host}/user/login`,
   // 登出
-  logout: `${host}/user/front_logout`,
+  logout: `${host}/user/logout`,
 
 };
 

@@ -12,35 +12,31 @@ class UserNav extends Component {
     super(props);
     this.state = {
       userInfo: utils.getUserInfo() ? utils.getUserInfo() : ''
-
     };
   }
   componentDidMount() {
-    if (this.state.userInfo) {
 
-    }
   }
   componentWillReceiveProps(nextProps) { }
 
   logout = () => {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'commonAction/action',
-      method: 'POST',
-      bury: {
-        name: "logout",
-      },
-      api: 'user/logout',
-      suc: {
-        fun: () => {
-          utils.logOut();
-          this.setState({ userInfo: null });
-          // 退出登录后跳到主页或者广告列表页
-          this.props.dispatch(routerRedux.push('/'));
-          message.success('登出成功！');
-        },
-      },
-    });
+
+    const P = new Promise((resolve, reject) => {
+      this.props.dispatch({
+        type: "user/logout",
+        payload: {
+          resolve,
+          reject,
+          id: this.state.userInfo.id
+        }
+      })
+    })
+
+    P.then((data) => {
+      utils.logOut();
+      this.setState({ userInfo: null });
+      message.success('登出成功！');
+    })
   }
 
   setWallet = (data) => {
@@ -61,17 +57,18 @@ class UserNav extends Component {
     let content = '';
     let data = [];
     const { userInfo } = this.state;
+
     const { location } = this.props;
 
     const pathname = location.pathname;
     if (userInfo) {
+      const { nickname, phone } = userInfo;
       const popContent = (
         <div className="pop-nav">
-          <p className="text"><Link to="/user/release">我发布的</Link></p>
-          <p className="text"><a onClick={this.logout}>退出登录</a></p>
+          {/**  <p className="text"><Link to="/user/release">我发布的</Link></p> **/}
+          <p className="text"><a onClick={this.logout}>登出</a></p>
         </div>);
-      const username = userInfo.username;
-
+      const username = nickname || phone;
       content = (<div>
         <Row>
           <Col span={12}>

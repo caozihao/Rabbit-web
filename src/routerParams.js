@@ -2,6 +2,7 @@
 const commonModels = () => {
   return [
     import('./models/user/user.js'),
+    import('./models/goods/goods.js'),
   ];
 };
 
@@ -23,12 +24,6 @@ export default [
     models: () => [
       ...commonModels()],
     page: () => import('./routes/login/LoginContainer.jsx'),
-  },
-  {
-    path: '/',
-    models: () => [
-      ...commonModels()],
-    page: () => import('./routes/main/MainContainer.jsx'),
   },
   {
     path: '/find',

@@ -15,11 +15,11 @@ function jumpToLogin() {
 function handleHttpError(code, msg, url) {
   let result = {};
   switch (code) {
-    // 登陆失效
+    // 登录失效
     case 401:
       notification.warning({
         message: '提示',
-        description: '登陆失效，请重新登录',
+        description: '登录失效，请重新登录',
       });
       utils.logOut();
       jumpToLogin();
@@ -97,7 +97,7 @@ async function easyFetch(options) {
   // 方法为get时, 请求参数需要自己拼成queryString加到url上
   // 方法为post时,请求参数放到body里面,header中要加入Content-Type
 
-  // 刷新登陆信息 ,防止登陆过期
+  // 刷新登录信息 ,防止登录过期
   // whi.setInterfaceOverdueTime();
 
   const { url: baseUrl, method, queryParams, contentType, headers } = options;
@@ -180,7 +180,7 @@ async function easyFetch(options) {
     // return false;
   }
 }
-// 根据返回数据中的code来判断是否是登陆失效,如果失效,跳转到登录页
+// 根据返回数据中的code来判断是否是登录失效,如果失效,跳转到登录页
 // const jumpToLoginIfTimeout = (json) => {
 //   let { code } = json;
 //   code = code.toString();
@@ -188,8 +188,8 @@ async function easyFetch(options) {
 //   // 11020019: ticket过期，需要重新登录
 //   // 11020021: 登录失效
 //   if (code === '11020019' || code === '11020021') {
-//     // alert('登陆失效');
-//     console.log('登陆失效,准备跳转到登录页');
+//     // alert('登录失效');
+//     console.log('登录失效,准备跳转到登录页');
 //     utils.goHref('/#/login');
 //   }
 // };
