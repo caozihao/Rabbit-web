@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Card, Table, Row, Col, Select, DatePicker, Input } from 'antd';
+import { Card, Table, Row, Col, Select, DatePicker, Input, Button, Pagination } from 'antd';
 import { Link } from 'dva/router';
 import enumerateConstant from '../.././../config/enumerateConstant';
+import { pageSize } from '../../../config/config';
+import TableParams from './TableParams';
 import "./Page.scss";
 
 const { goodsType } = enumerateConstant;
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
+const { RangePicker } = DatePicker;
 const Option = Select.Option;
 
 class GoodsListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goodsTypeOption: []
+      goodsTypeOption: [],
+      category: '',
+      startTime: '',
+      endTime: '',
+      place: ''
     }
   }
 
@@ -24,12 +30,23 @@ class GoodsListPage extends Component {
 
   componentWillReceiveProps(nextProps) { }
 
-  handleChangeSelect = (e) => {
-
+  handleChangeSelect = (category) => {
+    this.setState({
+      category
+    })
   }
 
-  handleChangeRangePicker = (e) => {
+  handleChangeRangePicker = (dates, dateStrings) => {
+    this.setState({
+      startTime: dateStrings[0],
+      endTime: dateStrings[1]
+    })
+  }
 
+  handleChangeInput = (e) => {
+    this.setState({
+      place: e.target.value,
+    })
   }
 
   getGoodsType = () => {
@@ -39,63 +56,52 @@ class GoodsListPage extends Component {
         <Option key={i} value={i}>{goodsType[i]}</Option>
       )
     }
+    goodsTypeOption.unshift(<Option key={-1} value={"-1"}>全部</Option>)
     return goodsTypeOption;
   }
 
 
-  render() {
 
-    let dataSource = [];
-    for (let i = 1; i <= 100; i++) {
-      dataSource.push({
-        id: i,
-        key: i,
-        title: `丢失了一个皮夹子_${i}`,
-        category: `钱包_${i}`,
-        lost_palce: `图书馆_${i}`,
-        image_url: " - ",
-        time: "2018-03-07 22:47",
-      })
+  getListByOffset = () => {
+    const params = this.getParams();
+    this.props.getListByOffset(params);
+  }
+
+  getParams = () => {
+    const { category, startTime, endTime, place } = this.state;
+    return {
+      category,
+      startTime,
+      endTime,
+      place,
+      pageNo: 1
     }
+  }
 
-    const columns = [{
-      title: '标题',
-      dataIndex: 'title',
-      key: 'title',
-      render: (text, record) => {
-        return (
-          <Link to={`/detail/${record.id}`}>{text}</Link>)
-      }
-    },
-    {
-      title: '时间',
-      dataIndex: 'time',
-      key: 'time',
-    },
-    {
-      title: '钱包',
-      dataIndex: 'category',
-      key: 'category',
-    },
-    {
-      title: '丢失地点',
-      dataIndex: 'lost_palce',
-      key: 'lost_palce',
-    },
-    {
-      title: '图片',
-      dataIndex: 'image_url',
-      key: 'image_url',
-    }];
+  handleTableChange = (page) => {
+    const params = this.getParams();
+    params.pageNo = page;
+    this.props.getListByOffset(params);
+  }
+
+  render() {
+    const { dataList, total } = this.props;
+    let dataSource = dataList;
 
     const goodsOption = this.getGoodsType();
+    const pageSetting = {
+      defaultCurrent: 1,
+      total,
+      pageSize,
+      onChange: this.handleTableChange,
+    }
 
     return (
       <div className="goods-list-page com-margin-top">
         <Card hoverable title="筛选条件">
           <Row>
-            <Col span={12}>失物类别：
-               <Select defaultValue="1"
+            <Col span={6}>失物类别：
+               <Select defaultValue="-1"
                 style={{ width: 200 }}
                 showSearch={true}
                 optionFilterProp={"children"}
@@ -104,25 +110,38 @@ class GoodsListPage extends Component {
                 {goodsOption}
               </Select>
             </Col>
-            <Col span={12}>丢失时间：<RangePicker placeholder={["请输入起始日期", "请输出截止日期"]} onChange={this.handleChangeRangePicker} />
+            <Col span={8}>丢失时间：
+            <RangePicker
+                showTime
+                format="YYYY-MM-DD HH:mm:ss"
+                placeholder={["请输入起始日期", "请输出截止日期"]} onChange={this.handleChangeRangePicker} />
             </Col>
-          </Row>
-          <br />
-          <Row>
-            <Col span={12}>丢失位置：
-            <Input style={{ width: 200 }} />
+            <Col span={6}>丢失位置：
+            <Input onChange={this.handleChangeInput} style={{ width: 200 }} />
+            </Col>
+            <Col span={4}>
+              <Button type="primary" style={{ width: 100 }} onClick={this.getListByOffset}>搜索</Button>
             </Col>
           </Row>
         </Card>
         <Card className="table-list com-margin-top">
           <Table
+            rowKey={item => item.id}
             dataSource={dataSource}
-            columns={columns} />
+            columns={TableParams}
+            pagination={pageSetting} />
         </Card>
       </div>)
   }
 }
 
 GoodsListPage.PropTypes = {};
-GoodsListPage.defaultProps = {};
-export default connect()(GoodsListPage);
+GoodsListPage.defaultProps = {
+  getListByOffset: () => { },
+  pageType: '',
+  dataList: [],
+  total: 0
+};
+
+
+export default GoodsListPage;

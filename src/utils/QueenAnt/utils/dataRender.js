@@ -11,6 +11,13 @@ function roundUp(num, bit = 2) {
   return Math.ceil(num * precision) / precision;
 }
 
+// 数字增加千分位分隔符
+function getNumWithCommas(num, separator = ',') {
+  const parts = num.toString().split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+  return parts.join('.');
+}
+
 // 表格数据渲染函数集合
 function formatDate(date, withTime = true) {
   if (typeof date === 'undefined') {
@@ -34,12 +41,6 @@ function formatFloat(num, comma = true, fixed = 2) {
   return result;
 }
 
-// 数字增加千分位分隔符
-function getNumWithCommas(num, separator = ',') {
-  const parts = num.toString().split('.');
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-  return parts.join('.');
-}
 
 function formatMoney(value, prefix = '￥', suffix = '', colored = true, fixed = 2) {
   let content = value;

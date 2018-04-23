@@ -30,14 +30,14 @@ export default [
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/FindContainer.jsx'),
+    page: () => import('./routes/goods/FindAndReceiveContainer.jsx'),
   },
   {
     path: '/receive',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/ReceiveContainer.jsx'),
+    page: () => import('./routes/goods/FindAndReceiveContainer.jsx'),
   },
   {
     path: '/detail/:id',

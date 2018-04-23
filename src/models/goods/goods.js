@@ -6,7 +6,9 @@ export default {
   namespace: 'goods',
   state: {
     loading: false,
-    list: ''
+    list: [],
+    total: 0,
+    detail: '',
   },
   reducers: {
     save(state, action) {
@@ -72,13 +74,17 @@ export default {
       const { resolve, reject, ...queryParams } = action.payload;
 
       function success(json) {
+        const { data: { entities, total } } = json;
         if (resolve && typeof resolve === 'function') {
           resolve(json);
         }
 
         return {
           type: 'save',
-          payload: {},
+          payload: {
+            list: entities,
+            total
+          },
         };
       }
       yield put({

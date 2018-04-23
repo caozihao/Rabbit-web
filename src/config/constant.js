@@ -3,4 +3,5 @@ export default {
   storage: {
     userInfo: 'RABBIT_USERINFO',
   },
+
 }

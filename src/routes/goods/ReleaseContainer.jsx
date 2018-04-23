@@ -22,7 +22,6 @@ class MainContainer extends Component {
   componentWillReceiveProps(nextProps) { }
 
   release = (values) => {
-    console.log('values ->', values);
     const P = new Promise((resolve, reject) => {
       this.props.dispatch({
         type: "goods/create",
