@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Layout } from 'antd';
 import Page from './detail/Page';
+import utils from '../../utils/QueenAnt/utils/utils';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 
@@ -12,16 +12,34 @@ class MainContainer extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount() { }
+  componentDidMount() {
+    const id = utils.getIdFromLocation(this.props.location, '/detail/:id');
+    this.getById(id);
+  }
+
   componentWillReceiveProps(nextProps) { }
+
+  getById = (id) => {
+    this.props.dispatch({
+      type: "goods/getById",
+      payload: {
+        id
+      }
+    })
+  }
+
+
   render() {
+    const { goods } = this.props;
+    const { detail } = goods;
+
     return (
       <MainLayout
         location={this.props.location}
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <Page />
+        <Page detail={detail} />
       </MainLayout>
     );
   }
@@ -29,8 +47,9 @@ class MainContainer extends Component {
 MainContainer.PropTypes = {};
 MainContainer.defaultProps = {};
 const mapStateToProps = (state) => {
+  const goods = state.goods;
   return {
-    // loading:state.loading.models.xxx
+    goods,
   };
 };
 export default connect(mapStateToProps)(MainContainer);

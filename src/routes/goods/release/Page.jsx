@@ -59,7 +59,7 @@ class GoodsReleasePage extends Component {
 
   handleSubmit = (e) => {
     const { userInfo } = this.state;
-    const { id: userId, nickname: userNickname } = userInfo;
+    const { id: userId, nickname: userNickname, phone: userPhone } = userInfo;
 
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -67,6 +67,7 @@ class GoodsReleasePage extends Component {
         values.status = 0;
         values.userId = userId;
         values.userNickname = userNickname;
+        values.userPhone = userPhone;
         this.props.release(values);
       }
     });

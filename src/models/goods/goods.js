@@ -50,14 +50,16 @@ export default {
       const { resolve, reject, ...queryParams } = action.payload;
 
       function success(json) {
-        const { data: { entity } } = json;
+        const { data: { entity: detail } } = json;
         if (resolve && typeof resolve === 'function') {
-          resolve(entity);
+          resolve(detail);
         }
 
         return {
           type: 'save',
-          payload: {},
+          payload: {
+            detail
+          },
         };
       }
       yield put({

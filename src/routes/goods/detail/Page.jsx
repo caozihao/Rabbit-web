@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'dva';
 import { Card, Table, Row, Col, Select, DatePicker, Input, Form, Button } from 'antd';
-import { Link } from 'dva/router';
+import dataRender from '../../../utils/QueenAnt/utils/dataRender';
 import "./Page.scss";
+import enumerateConstant from "../../../config/enumerateConstant";
 
+const { goodsType } = enumerateConstant;
 const FormItem = Form.Item;
-const { MonthPicker, RangePicker, WeekPicker } = DatePicker;
-const Option = Select.Option;
 
 class MainPage extends Component {
   constructor(props) {
     super(props);
+    this.formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 4 },
+      },
+      wrapperCol: {
+        xs: { span: 10 },
+        sm: { span: 10 },
+      },
+    };
+    this.btnFormItemLayout = {
+      wrapperCol: {
+        xs: { span: 10 },
+        sm: { span: 10, offset: 4 },
+      },
+    }
   }
 
   componentDidMount() {
+
 
   }
 
@@ -28,70 +44,102 @@ class MainPage extends Component {
 
   }
 
+  dealWithParams = () => {
+    const { detail } = this.props;
+    let value = '';
+    for (let i in detail) {
+      value = detail[i];
+      switch (i) {
+        case "type":
+          if (value === 'find') {
+            detail[i] = '寻物'
+          } else {
+            detail[i] = '招领'
+          }
+          break;
+        case "status":
+          if (value === 0) {
+            detail[i] = <span className="color-process">发布中</span>
+          } else if (value === 1) {
+            detail[i] = <span className="color-end">已结束</span>
+          }
+          break;
+        case "createdTime":
+          detail[i] = dataRender.renderTime(value);
+          break;
+        case "category":
+          detail[i] = goodsType[value];
+          break;
+        default: break;
+      }
+    }
+
+    return detail;
+  }
+
+
   render() {
-    const formItemLayout = {
-      labelCol: {
-        xs: { span: 24 },
-        sm: { span: 4 },
-      },
-      wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 19 },
-      },
-    };
+    let { articleContent, articleTitle, type, category, createdTime, imageUrl, place, status, userNickname, userPhone, articleReadNum } = this.dealWithParams();
+
     return (
       <div className="goods-detail-page">
         <Card hoverable>
-          <h1 className="title">丢失了一个皮夹子</h1>
+          <h1 className="title">{articleTitle}</h1>
           <ul className="title-brief clearfix">
-            <li><b>发布时间&nbsp;&nbsp;:&nbsp;&nbsp;</b>2018年03月25日 15:07:15</li>
-            <li><b>浏览量&nbsp;&nbsp;:&nbsp;&nbsp;</b>1024</li>
-            <li><b>状态&nbsp;&nbsp;:&nbsp;&nbsp;</b>发布中1</li>
+            <li><b>发布时间 : </b> {createdTime} </li>
+            <li><b>浏览量 : </b>{articleReadNum || 0}</li>
+            <li><b>状态 : </b>{status}</li>
           </ul>
           <Form className="goods-form">
+
             <FormItem
-              {...formItemLayout}
-              label={<b>发布者 </b>}
+              {...this.formItemLayout}
+              label="类型"
             >
-              张梦雪
-          </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label={<b>联系电话  </b>}
-            >
-              13564412364
-          </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label={<b>物品种类  </b>}
-            >
-              证件
-          </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label={<b>物品图片  </b>}
-            >
-              <img className="goods-picture" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521975520113&di=54650084008448d6f6ab887a0674d383&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dpixel_huitu%252C0%252C0%252C294%252C40%2Fsign%3D8f51dc693fa85edfee81f663202c6c4f%2Fc8177f3e6709c93d43afbbce943df8dcd10054ad.jpg" />
+              {type}
             </FormItem>
 
             <FormItem
-              {...formItemLayout}
-              label={<b>拾取地点  </b>}
+              {...this.formItemLayout}
+              label="发布者"
             >
-              食堂
-          </FormItem>
+              {userNickname}
+            </FormItem>
+
             <FormItem
-              {...formItemLayout}
-
-              label={<b>详细内容  </b>}
+              {...this.formItemLayout}
+              label="联系人手机号"
             >
-              东西放在了门卫处，请自己捡拾
-          </FormItem>
-          </Form>
+              {userPhone}
 
-          <div className="form-bottom">
-            <Button type="primary">已领取</Button>
-          </div>
+            </FormItem>
+
+            <FormItem
+              {...this.formItemLayout}
+              label="图片"
+            >
+              <img className="goods-picture" src={imageUrl} />
+            </FormItem>
+            <FormItem
+              {...this.formItemLayout}
+              label="物品种类"
+            >
+              {category}
+            </FormItem>
+
+            <FormItem
+              {...this.formItemLayout}
+              label='拾取地点'
+            >
+              {place}
+            </FormItem>
+            <FormItem
+              {...this.formItemLayout}
+              label='备注'
+            >
+              {articleContent}
+            </FormItem>
+          </Form>
 
         </Card>
       </div>)
@@ -99,5 +147,7 @@ class MainPage extends Component {
 }
 
 MainPage.PropTypes = {};
-MainPage.defaultProps = {};
-export default connect()(MainPage);
+MainPage.defaultProps = {
+  detail: {}
+};
+export default MainPage;

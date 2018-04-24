@@ -1,6 +1,6 @@
 
 const host = '/rabbitApi'
-const pageSize = 3;
+const pageSize = 10;
 
 export {
   host,
