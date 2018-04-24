@@ -7,5 +7,16 @@
         margin-right: 1.5%;
       }
     }
+    .card-table {
+      .ant-card-body {
+        min-height: 701.6px;
+      }
+    }
+  }
+  .latest-news {
+    .deepen-word {
+      margin: 0 20px;
+      font-weight: bold;
+    }
   }
 }

@@ -116,7 +116,7 @@ class GoodsReleasePage extends Component {
               label="类型"
             >
               {getFieldDecorator('type', {
-                initialValue: 'find',
+                initialValue: 'search',
                 rules: [
                   {
                     required: true
@@ -124,7 +124,7 @@ class GoodsReleasePage extends Component {
                 ],
               })(
                 <RadioGroup>
-                  <Radio value="find">寻物</Radio>
+                  <Radio value="search">寻物</Radio>
                   <Radio value="receive">招领</Radio>
                 </RadioGroup>
                 )}

@@ -51,7 +51,7 @@ class MainPage extends Component {
       value = detail[i];
       switch (i) {
         case "type":
-          if (value === 'find') {
+          if (value === 'search') {
             detail[i] = '寻物'
           } else {
             detail[i] = '招领'

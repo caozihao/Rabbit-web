@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Layout } from 'antd';
 import Page from './list/Page';
-import { pageSize } from '../../config/config';
+import { pageSize as defaultPageSize } from '../../config/config';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 
@@ -32,7 +31,7 @@ class MainContainer extends Component {
       }
 
       if (!values.pageSize) {
-        values.pageSize = pageSize;
+        values.pageSize = defaultPageSize;
       }
 
       this.props.dispatch({
@@ -41,7 +40,6 @@ class MainContainer extends Component {
           ...values
         }
       })
-
     }
 
   }
@@ -50,7 +48,17 @@ class MainContainer extends Component {
   render() {
     const { pageType } = this.state;
     const { goods } = this.props;
-    const { list, total } = goods;
+    const { receiveList, searchList, receiveTotal, searchTotal } = goods;
+
+    let list = [];
+    let total = 0;
+    if (pageType === 'search') {
+      list = searchList;
+      total = searchTotal;
+    } else if (pageType === 'receive') {
+      list = receiveList;
+      total = receiveTotal;
+    }
 
     const pageProps = {
       pageType,

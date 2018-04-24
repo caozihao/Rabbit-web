@@ -24,7 +24,7 @@ class TopNav extends Component {
     }
 
     const menuData = [
-      { title: '寻物', path: '/find' },
+      { title: '寻物', path: '/search' },
       { title: '招领', path: '/receive' },
       { title: '发布 +', path: '/release', highLight: true },
     ]

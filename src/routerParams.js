@@ -26,18 +26,18 @@ export default [
     page: () => import('./routes/login/LoginContainer.jsx'),
   },
   {
-    path: '/find',
+    path: '/search',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/FindAndReceiveContainer.jsx'),
+    page: () => import('./routes/goods/SearchAndReceiveContainer.jsx'),
   },
   {
     path: '/receive',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/FindAndReceiveContainer.jsx'),
+    page: () => import('./routes/goods/SearchAndReceiveContainer.jsx'),
   },
   {
     path: '/detail/:id',

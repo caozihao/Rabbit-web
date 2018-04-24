@@ -6,8 +6,12 @@ export default {
   namespace: 'goods',
   state: {
     loading: false,
-    list: [],
-    total: 0,
+    receiveList: [],
+    searchList: [],
+    allList: [],
+    receiveTotal: 0,
+    searchTotal: 0,
+    allTotal: 0,
     detail: '',
   },
   reducers: {
@@ -74,6 +78,7 @@ export default {
     },
     *getListByOffset(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
+      const { type } = queryParams;
 
       function success(json) {
         const { data: { entities, total } } = json;
@@ -81,12 +86,23 @@ export default {
           resolve(json);
         }
 
+        let payload = {};
+
+        if (!type) {
+          payload = {
+            allList: entities,
+            allTotal: total
+          }
+        } else {
+          payload = {
+            [`${type}List`]: entities,
+            [`${type}Total`]: total
+          }
+        }
+
         return {
           type: 'save',
-          payload: {
-            list: entities,
-            total
-          },
+          payload,
         };
       }
       yield put({
