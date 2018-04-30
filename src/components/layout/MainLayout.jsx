@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Layout, LocaleProvider } from 'antd';
+import { Layout, LocaleProvider,Row,Col } from 'antd';
 import { utils } from '../../utils/QueenAnt/qnUtils';
 import TopNav from '../../components/layout/TopNav.jsx';
 import CommonFooter from './CommonFooter.jsx';
 import HeadCarousel from './HeadCarousel.jsx';
+import SimpleBref from './SimpleBref.jsx';
 import './MainLayout.scss';
 
 
@@ -39,8 +40,13 @@ class MainLayout extends Component {
           <TopNav location={this.props.location} />
         </Header>
         <div className="main-content">
-          {needHeadCarousel ? <HeadCarousel /> : ''}
-          <Content>{this.state.children}</Content>
+        {
+          needHeadCarousel ?  <Row>
+            <Col span={18}>  <HeadCarousel /> </Col>
+            <Col span={6}>  <SimpleBref /></Col>
+          </Row>:''
+        }
+         <Content>{this.state.children}</Content>
         </div>
         {this.props.footer || <CommonFooter />}
       </Layout>

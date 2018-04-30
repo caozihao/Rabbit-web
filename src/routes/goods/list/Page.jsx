@@ -110,7 +110,7 @@ class GoodsListPage extends Component {
                 {goodsOption}
               </Select>
             </Col>
-            <Col span={8}>丢失时间：
+            <Col span={9}>丢失时间：
             <RangePicker
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
@@ -119,7 +119,7 @@ class GoodsListPage extends Component {
             <Col span={6}>丢失位置：
             <Input onChange={this.handleChangeInput} style={{ width: 200 }} />
             </Col>
-            <Col span={4}>
+            <Col span={3}>
               <Button type="primary" style={{ width: 100 }} onClick={this.getListByOffset}>搜索</Button>
             </Col>
           </Row>

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'antd';
 import './HeadCarousel.scss';
-import carousel_1_img from '../../assets/carousel_1.jpg';
-import carousel_2_img from '../../assets/carousel_2.jpg';
-import carousel_3_img from '../../assets/carousel_3.jpg';
-import carousel_4_img from '../../assets/carousel_4.jpg';
+// import carousel_1_img from '../../assets/carousel_1.jpg';
+import carousel_2_img from '../../assets/carousel_2.png';
+import carousel_3_img from '../../assets/carousel_3.png';
+import carousel_4_img from '../../assets/carousel_4.png';
 
 
 class HeadCarousel extends Component {
@@ -16,7 +16,7 @@ class HeadCarousel extends Component {
 
   getCarouselImgData = () => {
     let imgArr = [
-      carousel_1_img,
+      // carousel_1_img,
       carousel_2_img,
       carousel_3_img,
       carousel_4_img,
