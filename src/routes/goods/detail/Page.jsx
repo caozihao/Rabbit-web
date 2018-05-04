@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Table, Row, Col, Select, DatePicker, Input, Form, Button } from 'antd';
 import dataRender from '../../../utils/QueenAnt/utils/dataRender';
-import "./Page.scss";
 import enumerateConstant from "../../../config/enumerateConstant";
+import genData from '../../../utils/tools/genData';
+import "./Page.scss";
 
 const { goodsType } = enumerateConstant;
 const FormItem = Form.Item;
@@ -118,7 +119,7 @@ class MainPage extends Component {
               {...this.formItemLayout}
               label="图片"
             >
-              <img className="goods-picture" src={uploadFilename} />
+              {genData.genImg(uploadFilename)}
             </FormItem>
             <FormItem
               {...this.formItemLayout}
