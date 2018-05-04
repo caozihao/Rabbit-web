@@ -8,7 +8,7 @@ const FormItem = Form.Item;
 class RegistPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: '' }
+    this.state = { uploadFilename: '' }
     this.formItemLayout = {
       labelCol: {
         xs: { span: 24 },

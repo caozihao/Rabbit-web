@@ -61,7 +61,6 @@ class GoodsListPage extends Component {
   }
 
 
-
   getListByOffset = () => {
     const params = this.getParams();
     this.props.getListByOffset(params);

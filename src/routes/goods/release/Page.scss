@@ -1,4 +1,8 @@
 @import '../../../common.scss';
+.goods-release-spinging {
+  max-height: none !important;
+}
+
 .goods-release-page {
   .goods-picture {
     width: 300px;
@@ -6,5 +10,32 @@
   .submit-panel {
     padding-top: $md;
     border-top: 1px solid $lineColor;
+  }
+  .qiniu-upload {
+    position: relative;
+    .default-img {
+      @extend .flex-center;
+      height: 200px;
+      width: 200px;
+      border: 1px solid #c9c9c9;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    i {
+      font-size: $lg * 2;
+      color: #999999;
+    }
+    .upload-bk-img {
+      width: 100%;
+    }
+    .input-upload {
+      width: 200px;
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      height: 200px;
+      cursor: pointer;
+    }
   }
 }

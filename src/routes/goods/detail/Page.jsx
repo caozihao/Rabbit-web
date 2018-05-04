@@ -79,7 +79,7 @@ class MainPage extends Component {
 
 
   render() {
-    let { articleContent, articleTitle, type, category, createdTime, imageUrl, place, status, userNickname, userPhone, articleReadNum } = this.dealWithParams();
+    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum } = this.dealWithParams();
 
     return (
       <div className="goods-detail-page">
@@ -118,7 +118,7 @@ class MainPage extends Component {
               {...this.formItemLayout}
               label="图片"
             >
-              <img className="goods-picture" src={imageUrl} />
+              <img className="goods-picture" src={uploadFilename} />
             </FormItem>
             <FormItem
               {...this.formItemLayout}
