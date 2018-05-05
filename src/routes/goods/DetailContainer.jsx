@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
+import { message } from 'antd';
 import Page from './detail/Page';
+import { pageSize as defaultPageSize } from '../../config/config';
 import utils from '../../utils/QueenAnt/utils/utils';
 import MainLayout from '../../components/layout/MainLayout.jsx';
+import { routerRedux } from 'dva/router';
 // import  './MainContainer.scss';
 
 
@@ -11,13 +14,16 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.id = utils.getIdFromLocation(this.props.location, '/detail/:id');
+    this.state = {
+      commonList: [],
+    }
   }
   componentDidMount() {
-    const id = utils.getIdFromLocation(this.props.location, '/detail/:id');
-    this.getById(id);
+    this.getById(this.id);
+    this.getListByOffset({});
   }
 
-  componentWillReceiveProps(nextProps) { }
 
   getById = (id) => {
     this.props.dispatch({
@@ -28,18 +34,67 @@ class MainContainer extends Component {
     })
   }
 
+  publish = (values) => {
+    values.goodsId = this.id;
+    const P = new Promise((resolve, reject) => {
+      this.props.dispatch({
+        type: "comment/create",
+        payload: {
+          resolve,
+          reject,
+          ...values
+        }
+      })
+    })
+
+    P.then((json) => {
+      message.success('提交成功');
+      this.getListByOffset({});
+    })
+  }
+
+  getListByOffset = (values) => {
+    if (values) {
+
+      values.goodsId = this.id;
+      if (!values.pageNo) {
+        values.pageNo = 1;
+      }
+
+      if (!values.pageSize) {
+        values.pageSize = defaultPageSize;
+      }
+
+      this.props.dispatch({
+        type: "comment/getListByOffset",
+        payload: {
+          ...values
+        }
+      })
+    }
+
+  }
 
   render() {
-    const { goods } = this.props;
+    const { goods, comment } = this.props;
     const { detail } = goods;
+    const { list, total, curPage } = comment;
 
+    const pageProps = {
+      publish: this.publish,
+      getListByOffset: this.getListByOffset,
+      detail,
+      commrntCurPage: curPage,
+      commentList: list,
+      commentTotal: total
+    }
     return (
       <MainLayout
         location={this.props.location}
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <Page detail={detail} />
+        <Page {...pageProps} />
       </MainLayout>
     );
   }
@@ -48,8 +103,10 @@ MainContainer.PropTypes = {};
 MainContainer.defaultProps = {};
 const mapStateToProps = (state) => {
   const goods = state.goods;
+  const comment = state.comment;
   return {
     goods,
+    comment
   };
 };
 export default connect(mapStateToProps)(MainContainer);

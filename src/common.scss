@@ -4,7 +4,7 @@ $lineColor:#e7e7e7;
 $processColor:#66BB6A;
 $endColor:#B0BEC5;
 $base:64px;
-$pageWidth: 1080px;
+$pageWidth: 100%;
 $sm:8px;
 $md:16px;
 $lg:24px;
@@ -74,5 +74,5 @@ $bottom_height:9.4vh;
 }
 
 .row-img-style {
-  height: 150px;
+  width: 100px;
 }

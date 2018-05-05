@@ -3,6 +3,7 @@ const commonModels = () => {
   return [
     import('./models/user/user.js'),
     import('./models/goods/goods.js'),
+    import('./models/comment/comment.js'),
   ];
 };
 

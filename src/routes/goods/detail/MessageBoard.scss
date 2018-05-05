@@ -1,0 +1,21 @@
+@import '../../../common.scss';
+.goods-detail-message-board {
+  margin-top: $md;
+  .data-list {
+    p {
+      margin-bottom: 5px;
+      padding: 0;
+    }
+    .title {
+      text-align: left;
+    } // .description {
+    //   border-bottom: 1px solid $lineColor;
+    // }
+    .time {
+      text-align: right;
+    }
+  }
+  .self-nickname {
+    color: $colorPrimary;
+  }
+}

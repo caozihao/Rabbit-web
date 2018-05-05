@@ -96,8 +96,6 @@ class GoodsReleasePage extends Component {
   }
 
 
-
-
   // 图片上传前
   beforeUpload = (file) => {
     const _this = this;
@@ -128,14 +126,12 @@ class GoodsReleasePage extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        values.status = 0;
         values.userId = userId;
         values.userNickname = userNickname;
         values.userPhone = userPhone;
         if (uploadImg) {
           this.setState({ loading: true })
           this.qiniuJSUpload().then((uploadFilename) => {
-            console.log('uploadFilename ->', uploadFilename);
             values.uploadFilename = uploadFilename;
             this.props.release(values);
             this.setState({ loading: false })
@@ -143,6 +139,7 @@ class GoodsReleasePage extends Component {
             this.setState({ loading: false })
           })
         } else {
+          values.uploadFilename = '';
           this.props.release(values);
         }
       }
@@ -194,7 +191,6 @@ class GoodsReleasePage extends Component {
         <div className="goods-release-page">
           <Card hoverable title="发布">
             <Form className="goods-form" onSubmit={this.handleSubmit}>
-
               <FormItem
                 {...this.formItemLayout}
                 label="类型"
@@ -211,7 +207,7 @@ class GoodsReleasePage extends Component {
                     <Radio value="search">寻物</Radio>
                     <Radio value="receive">招领</Radio>
                   </RadioGroup>
-                  )}
+                )}
               </FormItem>
 
               <FormItem
@@ -229,7 +225,7 @@ class GoodsReleasePage extends Component {
                   <Input
                     placeholder="请输入文章标题"
                   />
-                  )}
+                )}
               </FormItem>
 
               <FormItem
@@ -267,7 +263,7 @@ class GoodsReleasePage extends Component {
                     onChange={this.handleChangeSelect}>
                     {goodsOption}
                   </Select>
-                  )}
+                )}
               </FormItem>
 
 
@@ -297,9 +293,10 @@ class GoodsReleasePage extends Component {
                   ],
                 })(
                   <Input />
-                  )}
+                )}
 
               </FormItem>
+
               <FormItem
                 {...this.formItemLayout}
 
@@ -314,14 +311,14 @@ class GoodsReleasePage extends Component {
                   ],
                 })(
                   <TextArea autosize={{ minRows: 5 }} />
-                  )}
+                )}
 
               </FormItem>
 
               <FormItem className="submit-panel text-center">
                 <Button style={{ width: 200 }} type="primary" htmlType="submit">
                   发布
-              </Button>
+                </Button>
               </FormItem>
             </Form>
           </Card>

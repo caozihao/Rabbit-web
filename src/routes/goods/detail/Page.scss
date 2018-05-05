@@ -1,5 +1,6 @@
 @import '../../../common.scss';
 .goods-detail-page {
+  margin-top: $md;
   .title {
     text-align: center;
   }
@@ -17,5 +18,9 @@
   }
   .goods-form {
     border-top: 1px solid $lineColor;
+  }
+  .button-area {
+    text-align: right;
+    color: $md;
   }
 }

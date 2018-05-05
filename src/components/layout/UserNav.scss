@@ -1,8 +1,9 @@
+@import '../../common.scss';
 .UserNav {
   color: #fff;
   text-align: center;
   >ul {
-    line-height: 72px;
+    line-height: $top_height;
     li {
       &.ant-menu-item {
         margin-top: -2px;

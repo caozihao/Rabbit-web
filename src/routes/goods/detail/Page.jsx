@@ -4,12 +4,14 @@ import { Card, Table, Row, Col, Select, DatePicker, Input, Form, Button } from '
 import dataRender from '../../../utils/QueenAnt/utils/dataRender';
 import enumerateConstant from "../../../config/enumerateConstant";
 import genData from '../../../utils/tools/genData';
+import MessageBoard from './MessageBoard';
+import SendMessageBoard from './SendMessageBoard';
 import "./Page.scss";
 
 const { goodsType } = enumerateConstant;
 const FormItem = Form.Item;
 
-class MainPage extends Component {
+class Page extends Component {
   constructor(props) {
     super(props);
     this.formItemLayout = {
@@ -80,7 +82,20 @@ class MainPage extends Component {
 
 
   render() {
-    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum } = this.dealWithParams();
+    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams();
+    const { commentList, commentTotal, commrntCurPage, publish, getListByOffset } = this.props;
+
+    const messageBoardProps = {
+      commentList,
+      commentTotal,
+      commrntCurPage,
+      getListByOffset,
+      publishUserId: userId
+    }
+
+    const sendMessageProps = {
+      publish,
+    }
 
     return (
       <div className="goods-detail-page">
@@ -143,12 +158,20 @@ class MainPage extends Component {
           </Form>
 
         </Card>
+
+        <MessageBoard {...messageBoardProps} />
+        <SendMessageBoard {...sendMessageProps} />
       </div>)
   }
 }
 
-MainPage.PropTypes = {};
-MainPage.defaultProps = {
-  detail: {}
+Page.PropTypes = {};
+Page.defaultProps = {
+  detail: {},
+  getListByOffset: () => { },
+  publish: () => { },
+  commentList: [],
+  commentTotal: 0,
+  commrntCurPage: 0,
 };
-export default MainPage;
+export default Page;
