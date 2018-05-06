@@ -4,8 +4,10 @@ import { Card, Table, Row, Col, Select, DatePicker, Input, Form, Button } from '
 import dataRender from '../../../utils/QueenAnt/utils/dataRender';
 import enumerateConstant from "../../../config/enumerateConstant";
 import genData from '../../../utils/tools/genData';
+import utils from '../../../utils/tools/utils';
 import MessageBoard from './MessageBoard';
 import SendMessageBoard from './SendMessageBoard';
+import { Link } from 'dva/router';
 import "./Page.scss";
 
 const { goodsType } = enumerateConstant;
@@ -29,6 +31,9 @@ class Page extends Component {
         xs: { span: 10 },
         sm: { span: 10, offset: 4 },
       },
+    }
+    this.state = {
+      userInfo: utils.getUserInfo() ? utils.getUserInfo() : ''
     }
   }
 
@@ -84,6 +89,7 @@ class Page extends Component {
   render() {
     let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams();
     const { commentList, commentTotal, commrntCurPage, publish, getListByOffset } = this.props;
+    const { userInfo } = this.state;
 
     const messageBoardProps = {
       commentList,
@@ -96,6 +102,21 @@ class Page extends Component {
     const sendMessageProps = {
       publish,
     }
+
+    let userPhoneDom = '';
+    if (userInfo) {
+      userPhoneDom = userPhone;
+    } else {
+      userPhoneDom = (
+        <p>
+          请
+          <Link to='/login' > 登录 </Link > |
+          <Link to='/regist'> 注册 </Link> 后查看
+        </p>
+      )
+    }
+
+
 
     return (
       <div className="goods-detail-page">
@@ -126,8 +147,7 @@ class Page extends Component {
               {...this.formItemLayout}
               label="联系人手机号"
             >
-              {userPhone}
-
+              {userPhoneDom}
             </FormItem>
 
             <FormItem

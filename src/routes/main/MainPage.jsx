@@ -28,23 +28,23 @@ class MainPage extends Component {
 
 
   dealWithItem = (item) => {
-    const { place, type, category, createdTime, userPhone } = item;
+    const { place, type, category, createdTime, userNickname } = item;
     let typeStr = '';
     let categoryStr = <span className="deepen-word">{goodsType[category]}</span>;
     let time = <span className="deepen-word">{dataRender.renderTime(createdTime)}</span>;
     let placeStr = <span className="deepen-word">{place}</span>
-    let phoneStr = userPhone.toString();
-    let frontWord = phoneStr.substring(0, 3);
-    let endWord = phoneStr.substring(phoneStr.length - 3, phoneStr.length);
-    let newPhone = <span className="deepen-word"> {`${frontWord} *** ${endWord}`}  </span>
+    // let phoneStr = userPhone.toString();
+    // let frontWord = phoneStr.substring(0, 3);
+    // let endWord = phoneStr.substring(phoneStr.length - 3, phoneStr.length);
+    // let newPhone = <span className="deepen-word"> {`${frontWord} *** ${endWord}`}  </span>
 
     if (type === 'search') {
-      typeStr = <span className="deepen-word">寻找</span>
+      typeStr = '寻找';
     } else {
-      typeStr = <span className="deepen-word">发现</span>
+      typeStr = '发现';
     }
 
-    return <p>手机用户  {newPhone} 在 {time} {placeStr} {typeStr} 1件 {categoryStr}</p>
+    return <p>{userNickname} 在 {time}( 时间 ) {placeStr}( 地点 ) {typeStr} {categoryStr}( 物品 )</p>
 
   }
 
@@ -77,15 +77,6 @@ class MainPage extends Component {
         </Card>
 
         <Row className="content com-margin-top">
-          <Col span={12}>
-            <Card className="card-table" hoverable title={<b>失物招领</b>} extra={<a href="/#/receive">查看更多</a>}>
-              <Table
-                rowKey={item => item.id}
-                dataSource={receiveList}
-                columns={TableParams}
-                pagination={receivePageSetting} />
-            </Card>
-          </Col>
 
           <Col span={12}>
             <Card className="card-table" hoverable title={<b>寻物启事</b>} extra={<a href="/#/search">查看更多</a>}>
@@ -94,6 +85,16 @@ class MainPage extends Component {
                 dataSource={searchList}
                 columns={TableParams}
                 pagination={searchPageSetting} />
+            </Card>
+          </Col>
+
+          <Col span={12}>
+            <Card className="card-table" hoverable title={<b>失物招领</b>} extra={<a href="/#/receive">查看更多</a>}>
+              <Table
+                rowKey={item => item.id}
+                dataSource={receiveList}
+                columns={TableParams}
+                pagination={receivePageSetting} />
             </Card>
           </Col>
 

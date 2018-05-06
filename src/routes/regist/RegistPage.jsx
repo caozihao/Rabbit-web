@@ -1,7 +1,25 @@
 import React, { Component } from 'react';
 import { Card, Input, Form, Button, Icon } from 'antd';
 import commonRules from '../../utils/QueenAnt/utils/commonRules';
+import { debugMode } from '../../config/config';
 import "./RegistPage.scss";
+
+let registInitialValue = {
+  phone: '',
+  nickname: '',
+  password: '',
+  rePassword: ''
+};
+
+if (debugMode) {
+  registInitialValue = {
+    phone: '13564410428',
+    nickname: 'Skull',
+    password: 'root1234',
+    rePassword: 'root1234'
+  }
+}
+
 
 const FormItem = Form.Item;
 
@@ -59,6 +77,7 @@ class RegistPage extends Component {
   }
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { phone, nickname, password, rePassword } = registInitialValue
 
     return (
       <div className="RegistPage">
@@ -69,7 +88,7 @@ class RegistPage extends Component {
           <Form onSubmit={this.handleSubmit} >
             <FormItem>
               {getFieldDecorator('phone', {
-                initialValue: '13564410428',
+                initialValue: phone,
                 rules: [
                   {
                     required: true, message: commonRules.requireMessage('require', '手机号'),
@@ -82,11 +101,11 @@ class RegistPage extends Component {
                     style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="请输入手机号"
                 />
-                )}
+              )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('nickname', {
-                initialValue: '猫猫盖子',
+                initialValue: nickname,
                 rules: [
                   {
                     required: true, message: commonRules.requireMessage('require', '昵称'),
@@ -98,11 +117,11 @@ class RegistPage extends Component {
                     style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="请输入昵称"
                 />
-                )}
+              )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
-                initialValue: 'root1234',
+                initialValue: password,
                 rules: [
                   {
                     required: true, message: commonRules.requireMessage('require', '密码')
@@ -115,11 +134,11 @@ class RegistPage extends Component {
                 <Input
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password" placeholder="请输入密码（8~20），必须含有一个数字和字母" />
-                )}
+              )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('rePassword', {
-                initialValue: 'root1234',
+                initialValue: rePassword,
                 rules: [{ required: true, message: commonRules.requireMessage('require', '确认密码') }, {
                   validator: this.checkConfirm,
                 }],

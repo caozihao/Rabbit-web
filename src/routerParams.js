@@ -4,6 +4,7 @@ const commonModels = () => {
     import('./models/user/user.js'),
     import('./models/goods/goods.js'),
     import('./models/comment/comment.js'),
+    import('./models/common/common.js'),
   ];
 };
 

@@ -5,7 +5,7 @@ import commonRules from '../../../utils/QueenAnt/utils/commonRules';
 import enumerateConstant from '../.././../config/enumerateConstant';
 import utils from '../../../utils/tools/utils';
 import qiniuUploadUtils from "../../../utils/tools/qiniuUpload";
-import { qiniu } from '../../../config/config';
+import { qiniu, debugMode } from '../../../config/config';
 import "./Page.scss";
 import * as qiniuJs from 'qiniu-js';
 
@@ -16,6 +16,20 @@ const { TextArea } = Input;
 const FormItem = Form.Item;
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
+
+let goodsInitialValue = {
+  articleTitle: '',
+  place: '',
+  articleContent: '',
+};
+
+if (debugMode) {
+  goodsInitialValue = {
+    articleTitle: '寻找一个皮夹子',
+    place: '图书馆',
+    articleContent: '已经放到门卫室了',
+  }
+}
 
 
 class GoodsReleasePage extends Component {
@@ -181,7 +195,8 @@ class GoodsReleasePage extends Component {
     const { nickname, phone } = userInfo;
     const goodsOption = this.getGoodsType();
     const { uploadImgUrl, curImgHeight, loading } = this.state;
-    // const { privateUrl } = this.getImgUrl();
+    const { articleTitle, place, articleContent } = goodsInitialValue;
+
 
     return (
       <Spin
@@ -215,7 +230,7 @@ class GoodsReleasePage extends Component {
                 label='标题'
               >
                 {getFieldDecorator('articleTitle', {
-                  initialValue: '寻找一个皮夹子',
+                  initialValue: articleTitle,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', '文章标题'),
@@ -285,7 +300,7 @@ class GoodsReleasePage extends Component {
                 label='拾取地点'
               >
                 {getFieldDecorator('place', {
-                  initialValue: '图书馆',
+                  initialValue: place,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', '拾取地点'),
@@ -303,7 +318,7 @@ class GoodsReleasePage extends Component {
                 label='备注'
               >
                 {getFieldDecorator('articleContent', {
-                  initialValue: '已经放到门卫室了',
+                  initialValue: articleContent,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', 'content'),

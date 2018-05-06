@@ -47,6 +47,7 @@ class MainContainer extends Component {
 
     return (
       <MainLayout
+
         location={this.props.location}
         needLogin={false}
       // footer={<MainFooter />}

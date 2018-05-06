@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Layout, LocaleProvider,Row,Col } from 'antd';
+import { Layout, LocaleProvider, Row, Col } from 'antd';
 import { utils } from '../../utils/QueenAnt/qnUtils';
 import TopNav from '../../components/layout/TopNav.jsx';
+import { connect } from 'dva';
 import CommonFooter from './CommonFooter.jsx';
 import HeadCarousel from './HeadCarousel.jsx';
-import SimpleBref from './SimpleBref.jsx';
+import Statistics from './Statistics.jsx';
 import './MainLayout.scss';
 
 
@@ -18,7 +19,11 @@ class MainLayout extends Component {
       children: this.getChildren(this.props),
     };
   }
-  componentDidMount() { }
+
+  componentDidMount() {
+    this.getStatistics();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
       this.setState({
@@ -26,12 +31,26 @@ class MainLayout extends Component {
       });
     }
   }
+
+  getStatistics = () => {
+    this.props.dispatch({
+      type: "common/getStatistics",
+      payload: {
+      }
+    })
+  }
+
   getChildren = (props) => {
     return props.children;
   }
-  render() {
 
-    const { needHeadCarousel } = this.props;
+
+  render() {
+    const { needHeadCarousel, common } = this.props;
+
+    const statisticsProps = {
+      ...common
+    }
 
     return (
       <Layout className="MainLayout">
@@ -40,13 +59,13 @@ class MainLayout extends Component {
           <TopNav location={this.props.location} />
         </Header>
         <div className="main-content">
-        {
-          needHeadCarousel ?  <Row>
-            <Col span={18}>  <HeadCarousel /> </Col>
-            <Col span={6}>  <SimpleBref /></Col>
-          </Row>:''
-        }
-         <Content>{this.state.children}</Content>
+          {
+            needHeadCarousel ? <Row>
+              <Col span={18}>  <HeadCarousel /> </Col>
+              <Col span={6}>  <Statistics {...statisticsProps} /></Col>
+            </Row> : ''
+          }
+          <Content>{this.state.children}</Content>
         </div>
         {this.props.footer || <CommonFooter />}
       </Layout>
@@ -57,4 +76,13 @@ MainLayout.PropTypes = {};
 MainLayout.defaultProps = {
   needHeadCarousel: true
 };
-export default MainLayout;
+
+const mapStateToProps = (state) => {
+  const common = state.common;
+  return {
+    common,
+  };
+};
+
+
+export default connect(mapStateToProps)(MainLayout);

@@ -32,6 +32,10 @@ $bottom_height:9.4vh;
   color: $endColor;
 }
 
+.important {
+  color: red;
+}
+
 .clearfix {
   display: inline-block;
   &:after {
