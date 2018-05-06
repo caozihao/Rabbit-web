@@ -14,6 +14,7 @@ $hightlight:rgba(10, 226, 236, 0.529412);
 $content_height:100vh;
 $top_height:8.8vh;
 $bottom_height:9.4vh;
+$min_content_height:$content_height - $top_height - $bottom_height;
 .com-margin-top {
   margin-top: $md;
 }

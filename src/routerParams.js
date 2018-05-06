@@ -55,4 +55,18 @@ export default [
     ],
     page: () => import('./routes/goods/ReleaseContainer.jsx'),
   },
+  {
+    path: '/about_us',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/static/StaticContainer.jsx'),
+  },
+  {
+    path: '/help',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/static/StaticContainer.jsx'),
+  },
 ];

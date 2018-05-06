@@ -9,7 +9,7 @@
   .main-content {
     padding: $md;
     min-width: $pageWidth;
-    min-height: $content_height - $top_height - $bottom_height;
+    min-height: $min_content_height;
   }
   .app {
     padding-bottom: $lg;

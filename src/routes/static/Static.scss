@@ -1,0 +1,23 @@
+@import '../../common.scss';
+.AboutUsPage,
+.HelpPage {
+  min-height: $min_content_height;
+  .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+  .content {
+    line-height: $md * 2;
+    @extend .flex-center;
+    font-size: $md;
+  }
+  p {
+    margin: 0;
+    .paragraph-space {
+      display: inline-block;
+      width: $md * 2;
+    }
+  }
+}
