@@ -9,10 +9,9 @@ import HeadCarousel from './HeadCarousel.jsx';
 import Statistics from './Statistics.jsx';
 import './MainLayout.scss';
 
-
-const { Header, Content, Footer, Sider } = Layout;
-
+const { Header, Content } = Layout;
 class MainLayout extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +43,6 @@ class MainLayout extends Component {
     return props.children;
   }
 
-
   render() {
     const { needHeadCarousel, common } = this.props;
 
@@ -72,7 +70,9 @@ class MainLayout extends Component {
     );
   }
 }
+
 MainLayout.PropTypes = {};
+
 MainLayout.defaultProps = {
   needHeadCarousel: true
 };
@@ -83,6 +83,5 @@ const mapStateToProps = (state) => {
     common,
   };
 };
-
 
 export default connect(mapStateToProps)(MainLayout);

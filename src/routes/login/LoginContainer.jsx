@@ -12,7 +12,9 @@ class MainContainer extends Component {
     super(props);
     this.state = {};
   }
+
   componentDidMount() { }
+
   componentWillReceiveProps(nextProps) { }
 
   login = (values) => {
@@ -33,7 +35,6 @@ class MainContainer extends Component {
       this.props.dispatch(routerRedux.push('/'));
     })
   }
-
 
   render() {
     return (

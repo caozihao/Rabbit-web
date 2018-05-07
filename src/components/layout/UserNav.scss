@@ -3,7 +3,8 @@
   color: #fff;
   text-align: center;
   >ul {
-    line-height: $top_height;
+    line-height: 65px;
+    height: 65px;
     li {
       &.ant-menu-item {
         margin-top: -2px;

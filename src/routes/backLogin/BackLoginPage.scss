@@ -1,0 +1,10 @@
+@import '../../common.scss';
+.BackLoginPage {
+  width: 400px;
+  display: inline-block;
+  .login-form-button {
+    width: 100%;
+    background: #1890ff;
+    color: $color-white;
+  }
+}

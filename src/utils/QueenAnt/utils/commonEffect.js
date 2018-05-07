@@ -16,7 +16,7 @@ function* common(action, { call, put }) {
       headers = {
         ...headers,
         // 'Account-Code': utils.getUserInfo(),
-        'Access-Token': utils.getUserInfo().accessToken,
+        'Access-Token': utils.getUserInfo().accesstoken,
       };
     }
   }
