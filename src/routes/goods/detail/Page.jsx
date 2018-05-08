@@ -154,7 +154,7 @@ class Page extends Component {
               {...this.formItemLayout}
               label="图片"
             >
-              {genData.genImg(uploadFilename)}
+              {genData.genImg(uploadFilename,'detail')}
             </FormItem>
             <FormItem
               {...this.formItemLayout}

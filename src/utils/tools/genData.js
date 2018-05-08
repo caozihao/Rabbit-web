@@ -9,14 +9,20 @@ const getImgUrl = (key) => {
   return publicUrl;
 }
 
-const genImg = (text) => {
+const genImg = (text,type="row") => {
+  let classname = '';
   let src = '';
   if (text) {
     src = getImgUrl(text);
   } else {
     src = noImgUrl;
   }
-  return (<img className="row-img-style" src={src} alt="img" />);
+  if(type === 'row'){
+    classname = "row-img-style"
+  }else{
+    classname = "detail-img-style"
+  }
+  return (<img className={classname} src={src} alt="img" />);
 }
 
 export default {
