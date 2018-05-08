@@ -1,20 +1,21 @@
-$colorPrimary: #14B9C8;
-$chooseColorPrimary:#12A7B4;
-$lineColor:#e7e7e7;
-$processColor:#66BB6A;
-$endColor:#B0BEC5;
+$color-primary: #14B9C8;
+$choose-color-primary:#12A7B4;
+$line-color:#e7e7e7;
+$process-color:#66BB6A;
+$end-color:#B0BEC5;
+$color-white:#FFF;
 $base:64px;
-$pageWidth: 100%;
+$page-width: 100%;
 $sm:8px;
 $md:16px;
 $lg:24px;
-$inputHeight:40px;
-$inputFontSize:14px;
-$hightlight:rgba(10, 226, 236, 0.529412);
-$content_height:100vh;
-$top_height:8.8vh;
-$bottom_height:9.4vh;
-$min_content_height:$content_height - $top_height - $bottom_height;
+$input-height:40px;
+$input-fontSize:14px;
+$hight-light:rgba(10, 226, 236, 0.529412);
+$content-height:100vh;
+$top-height:8.8vh;
+$bottom-height:9.4vh;
+$min-content-height:$content-height - $top-height - $bottom-height;
 .com-margin-top {
   margin-top: $md;
 }
@@ -26,11 +27,11 @@ $min_content_height:$content_height - $top_height - $bottom_height;
 }
 
 .color-process {
-  color: $processColor;
+  color: $process-color;
 }
 
 .color-end {
-  color: $endColor;
+  color: $end-color;
 }
 
 .important {

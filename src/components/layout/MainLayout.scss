@@ -1,15 +1,15 @@
 @import '../../common.scss';
 .MainLayout {
-  min-width: $pageWidth;
-  min-height: $content_height;
+  min-width: $page-width;
+  min-height: $content-height;
   .ant-layout-header {
-    background: $colorPrimary;
-    min-height: $top_height;
+    background: $color-primary;
+    height: 64px;
   }
   .main-content {
     padding: $md;
-    min-width: $pageWidth;
-    min-height: $min_content_height;
+    min-width: $page-width;
+    min-height: $min-content-height;
   }
   .app {
     padding-bottom: $lg;
@@ -21,6 +21,6 @@
     height: 245px; */
   }
   .CommonFooter {
-    min-height: $bottom_height;
+    min-height: $bottom-height;
   }
 }

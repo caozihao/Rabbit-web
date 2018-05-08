@@ -69,4 +69,25 @@ export default [
     ],
     page: () => import('./routes/static/StaticContainer.jsx'),
   },
+  {
+    path: '/back',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backLogin/BackLoginContainer.jsx'),
+  },
+  {
+    path: '/back/login',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backLogin/BackLoginContainer.jsx'),
+  },
+  {
+    path: '/back/user',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backUser/BackUserContainer.jsx'),
+  },
 ];

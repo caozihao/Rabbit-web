@@ -1,16 +1,15 @@
 @import '../../common.scss';
 .NavMenu {
-  background: $colorPrimary;
+  background: $color-primary;
   &.ant-menu-horizontal {
     .ant-menu-item-selected,
     .ant-menu-item-active {
-      background-color: $hightlight;
+      background-color: $hight-light;
     }
   }
 }
 
 .default-active {
-  background: $chooseColorPrimary !important;
-  border-bottom: 1px solid $chooseColorPrimary !important;
-
+  background: $choose-color-primary !important;
+  border-bottom: 1px solid $choose-color-primary !important;
 }
