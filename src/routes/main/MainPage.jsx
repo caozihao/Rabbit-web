@@ -6,6 +6,7 @@ import TableParams from './TableParams';
 import { pageSize } from '../../config/config';
 import enumerateConstant from "../../config/enumerateConstant";
 import dataRender from '../../utils/QueenAnt/utils/dataRender';
+import { Link } from 'dva/router';
 import './MainPage.scss';
 
 const { goodsType } = enumerateConstant;
@@ -28,7 +29,7 @@ class MainPage extends Component {
 
 
   dealWithItem = (item) => {
-    const { place, type, category, createdTime, userNickname } = item;
+    const { place, type, category, createdTime, userNickname, id } = item;
     let typeStr = '';
     let categoryStr = <span className="deepen-word">{goodsType[category]}</span>;
     let time = <span className="deepen-word">{dataRender.renderTime(createdTime)}</span>;
@@ -44,7 +45,8 @@ class MainPage extends Component {
       typeStr = '发现';
     }
 
-    return <p>{userNickname} 在 {time}( 时间 ) {placeStr}( 地点 ) {typeStr} {categoryStr}( 物品 )</p>
+    return <p>{userNickname} 在 {time} (时间) {placeStr}(地点) {typeStr} {categoryStr} (物品)<span className="click-seeing"><Link to={`/detail/${id}`}>点我查看</Link ></span></p>
+
 
   }
 

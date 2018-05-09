@@ -7,6 +7,8 @@ export default {
   getById: `${host}/goods/getById`,
   // 分页
   getListByOffset: `${host}/goods/getListByOffset`,
+  // 更新阅读量
+  updateReadNumById: `${host}/goods/updateReadNumById`,
 
 };
 

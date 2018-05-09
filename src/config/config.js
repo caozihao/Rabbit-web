@@ -10,7 +10,6 @@ const qiniu = {
 }
 const debugMode = false;
 
-
 export {
   host,
   pageSize,

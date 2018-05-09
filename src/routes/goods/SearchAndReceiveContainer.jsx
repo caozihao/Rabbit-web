@@ -41,7 +41,13 @@ class MainContainer extends Component {
         }
       })
     }
+  }
 
+  getStatistics = () => {
+    this.props.dispatch({
+      type: "common/getStatistics",
+      payload: {}
+    })
   }
 
 

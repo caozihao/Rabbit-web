@@ -7,6 +7,7 @@ import { connect } from 'dva';
 import CommonFooter from './CommonFooter.jsx';
 import HeadCarousel from './HeadCarousel.jsx';
 import Statistics from './Statistics.jsx';
+import constant from '../../config/constant';
 import './MainLayout.scss';
 
 const { Header, Content } = Layout;
@@ -20,6 +21,7 @@ class MainLayout extends Component {
   }
 
   componentDidMount() {
+    console.log(`Current version: ${constant.version}`);
     this.getStatistics();
   }
 

@@ -9,7 +9,6 @@ import MainLayout from '../../components/layout/MainLayout.jsx';
 import { routerRedux } from 'dva/router';
 // import  './MainContainer.scss';
 
-
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +20,7 @@ class MainContainer extends Component {
   }
   componentDidMount() {
     this.getById(this.id);
+    this.updateReadNumById(this.id);
     this.getListByOffset({});
   }
 
@@ -30,6 +30,23 @@ class MainContainer extends Component {
       type: "goods/getById",
       payload: {
         id
+      }
+    })
+  }
+
+  updateReadNumById = (id) => {
+    this.props.dispatch({
+      type: "goods/updateReadNumById",
+      payload: {
+        id
+      }
+    })
+  }
+
+  getStatistics = () => {
+    this.props.dispatch({
+      type: "common/getStatistics",
+      payload: {
       }
     })
   }
@@ -49,6 +66,7 @@ class MainContainer extends Component {
 
     P.then((json) => {
       message.success('提交成功');
+      this.getStatistics();
       this.getListByOffset({});
     })
   }

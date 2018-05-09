@@ -35,6 +35,7 @@ class UserNav extends Component {
     P.then((data) => {
       utils.logOut();
       this.setState({ userInfo: null });
+      this.props.dispatch(routerRedux.push('/login'));
       message.success('登出成功！');
     })
   }

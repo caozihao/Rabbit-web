@@ -35,8 +35,6 @@ export default {
           resolve(json);
         }
 
-        console.log('entity->', entity);
-
         return {
           type: 'save',
           payload: {

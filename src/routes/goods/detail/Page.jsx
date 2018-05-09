@@ -52,43 +52,45 @@ class Page extends Component {
 
   }
 
-  dealWithParams = () => {
-    const { detail } = this.props;
-    let value = '';
-    for (let i in detail) {
-      value = detail[i];
-      switch (i) {
-        case "type":
-          if (value === 'search') {
-            detail[i] = '寻物'
-          } else {
-            detail[i] = '招领'
-          }
-          break;
-        case "status":
-          if (value === 0) {
-            detail[i] = <span className="color-process">发布中</span>
-          } else if (value === 1) {
-            detail[i] = <span className="color-end">已结束</span>
-          }
-          break;
-        case "createdTime":
-          detail[i] = dataRender.renderTime(value);
-          break;
-        case "category":
-          detail[i] = goodsType[value];
-          break;
-        default: break;
+  dealWithParams = (detail) => {
+    let copyDetail = Object.assign({}, detail);
+    if (Object.keys(detail).length) {
+      let value = '';
+      for (let i in copyDetail) {
+        value = copyDetail[i];
+        switch (i) {
+          case "type":
+            if (value === 'search') {
+              copyDetail[i] = '寻物'
+            } else {
+              copyDetail[i] = '招领'
+            }
+            break;
+          case "status":
+            if (value === 1) {
+              copyDetail[i] = <span className="color-process">发布中</span>
+            } else if (value === 2) {
+              copyDetail[i] = <span className="color-end">已结束</span>
+            }
+            break;
+          case "createdTime":
+            copyDetail[i] = dataRender.renderTime(value);
+            break;
+          case "category":
+            copyDetail[i] = goodsType[value];
+            break;
+          default: break;
+        }
       }
     }
-
-    return detail;
+    return copyDetail;
   }
 
 
   render() {
-    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams();
-    const { commentList, commentTotal, commrntCurPage, publish, getListByOffset } = this.props;
+
+    const { commentList, commentTotal, commrntCurPage, publish, getListByOffset, detail } = this.props;
+    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams(detail);
     const { userInfo } = this.state;
 
     const messageBoardProps = {
@@ -115,8 +117,6 @@ class Page extends Component {
         </p>
       )
     }
-
-
 
     return (
       <div className="goods-detail-page">
@@ -154,7 +154,7 @@ class Page extends Component {
               {...this.formItemLayout}
               label="图片"
             >
-              {genData.genImg(uploadFilename,'detail')}
+              {genData.genImg(uploadFilename, 'detail')}
             </FormItem>
             <FormItem
               {...this.formItemLayout}

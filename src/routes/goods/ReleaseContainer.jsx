@@ -21,6 +21,14 @@ class MainContainer extends Component {
 
   componentWillReceiveProps(nextProps) { }
 
+  getStatistics = () => {
+    this.props.dispatch({
+      type: "common/getStatistics",
+      payload: {
+      }
+    })
+  }
+
   release = (values) => {
     const P = new Promise((resolve, reject) => {
       this.props.dispatch({
@@ -35,6 +43,7 @@ class MainContainer extends Component {
 
     P.then((json) => {
       message.success('发布成功');
+      this.getStatistics();
       const type = values.type;
       this.props.dispatch(routerRedux.push(`/${type}`));
     })

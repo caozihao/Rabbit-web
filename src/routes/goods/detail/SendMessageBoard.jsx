@@ -36,14 +36,16 @@ class SendMessageBoard extends Component {
 
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    const { userInfo } = this.state;
 
+    const { userInfo } = this.state;
+    e.preventDefault();
     this.props.form.validateFields((err, values) => {
-      values.userId = userInfo.id;
-      values.userNickname = userInfo.nickname;
-      this.props.publish(values);
-      this.props.form.resetFields();
+      if (!err) {
+        values.userId = userInfo.id;
+        values.userNickname = userInfo.nickname;
+        this.props.publish(values);
+        this.props.form.resetFields();
+      }
     });
   }
 
@@ -58,10 +60,10 @@ class SendMessageBoard extends Component {
       contentDom = (<p className="button-area"><Button type="primary" style={{ width: 100 }} htmlType="submit">提交</Button></p>);
     } else {
       contentDom =
-        (<Card className="login-regist-panel flex-center" style={{ height: 300 }}>
-          您还未登录，请先
+        (<Card className="login-regist-panel flex-center">
+          请先
           <Link to='/login'> 登录 </Link> |
-          <Link to='/regist'> 注册 </Link>
+          <Link to='/regist'> 注册 </Link> 后发表评论
         </Card>)
     }
 

@@ -50,6 +50,28 @@ export default {
         },
       });
     },
+    *updateReadNumById(action, { put }) {
+      const { resolve, reject, ...queryParams } = action.payload;
+
+      function success(json) {
+        if (resolve && typeof resolve === 'function') {
+          resolve(json);
+        }
+        return {
+          type: 'save',
+          payload: {},
+        };
+      }
+      yield put({
+        type: 'common',
+        payload: {
+          method: 'POST',
+          url: service.updateReadNumById,
+          queryParams,
+          success,
+        },
+      });
+    },
     *getById(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
 

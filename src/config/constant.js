@@ -1,5 +1,5 @@
 export default {
-  version: 'Beta',
+  version: '0.1',
   storage: {
     userInfo: 'RABBIT_USERINFO',
   },
