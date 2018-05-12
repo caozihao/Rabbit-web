@@ -67,6 +67,7 @@ class UserNav extends Component {
       const popContent = (
         <div className="pop-nav">
           {/**  <p className="text"><Link to="/user/release">我发布的</Link></p> **/}
+          <p className="text"><Link to='/back'>后台管理</Link></p>
           <p className="text"><a onClick={this.logout}>登出</a></p>
         </div>);
       const username = nickname || phone;

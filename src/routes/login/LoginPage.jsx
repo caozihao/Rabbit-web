@@ -22,6 +22,16 @@ class LoginPage extends Component {
 
   }
 
+  checkPassword = (rule, value, callback) => {
+    if (value && value.length < 8) {
+      callback(commonRules.otherMessage('密码', 'min', 8));
+    } else if (value && value.length > 20) {
+      callback(commonRules.otherMessage('密码', 'max', 20));
+    } else {
+      callback();
+    };
+  }
+
   componentDidMount() {
 
   }
@@ -62,7 +72,7 @@ class LoginPage extends Component {
                     style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="请输入手机号"
                 />
-                )}
+              )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
@@ -71,13 +81,16 @@ class LoginPage extends Component {
                   {
                     required: true, message: commonRules.requireMessage('require', '密码')
                   },
+                  {
+                    validator: this.checkPassword,
+                  },
                   commonRules.validate('password'),
                 ],
               })(
                 <Input
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password" placeholder="请输入密码" />
-                )}
+              )}
             </FormItem>
 
             <FormItem>

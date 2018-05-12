@@ -15,22 +15,12 @@ class MainLayout extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      children: this.getChildren(this.props),
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     console.log(`Current version: ${constant.version}`);
     this.getStatistics();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      this.setState({
-        children: this.getChildren(nextProps),
-      });
-    }
   }
 
   getStatistics = () => {
@@ -65,7 +55,7 @@ class MainLayout extends Component {
               <Col span={6}>  <Statistics {...statisticsProps} /></Col>
             </Row> : ''
           }
-          <Content>{this.state.children}</Content>
+          <Content>{this.props.children}</Content>
         </div>
         {this.props.footer || <CommonFooter />}
       </Layout>

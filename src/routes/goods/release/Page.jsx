@@ -297,7 +297,7 @@ class GoodsReleasePage extends Component {
 
               <FormItem
                 {...this.formItemLayout}
-                label='拾取地点'
+                label='地点'
               >
                 {getFieldDecorator('place', {
                   initialValue: place,

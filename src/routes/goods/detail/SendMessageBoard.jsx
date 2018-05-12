@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Form, Input, Button } from 'antd';
 import commonRules from '../../../utils/QueenAnt/utils/commonRules';
-import enumerateConstant from "../../../config/enumerateConstant";
 import utils from '../../../utils/tools/utils';
-
-import { Link } from 'dva/router';
+import NeedLogin from '../../../components/common/NeedLogin.jsx'
 import "./MessageBoard.scss";
-
 const { TextArea } = Input;
-const { goodsType } = enumerateConstant;
 const FormItem = Form.Item;
 
 class SendMessageBoard extends Component {
@@ -53,6 +49,7 @@ class SendMessageBoard extends Component {
   render() {
 
     const { getFieldDecorator } = this.props.form;
+    const { location } = this.props;
 
     let contentDom = "";
 
@@ -61,9 +58,7 @@ class SendMessageBoard extends Component {
     } else {
       contentDom =
         (<Card className="login-regist-panel flex-center">
-          请先
-          <Link to='/login'> 登录 </Link> |
-          <Link to='/regist'> 注册 </Link> 后发表评论
+          <NeedLogin location={location} />
         </Card>)
     }
 

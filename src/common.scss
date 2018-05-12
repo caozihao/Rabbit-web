@@ -26,15 +26,18 @@ $min-content-height:$content-height - $top-height - $bottom-height;
   background-position: 50% 50%;
 }
 
-.color-process {
+.color-process,
+.col-green {
   color: $process-color;
 }
 
-.color-end {
+.color-end,
+.col-grey {
   color: $end-color;
 }
 
-.important {
+.important,
+.col-red {
   color: red;
 }
 
@@ -82,6 +85,7 @@ $min-content-height:$content-height - $top-height - $bottom-height;
 .row-img-style {
   width: 100px;
 }
-.detail-img-style{
-  width:250px;
+
+.detail-img-style {
+  width: 250px;
 }

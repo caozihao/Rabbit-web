@@ -7,7 +7,7 @@ import genData from '../../../utils/tools/genData';
 import utils from '../../../utils/tools/utils';
 import MessageBoard from './MessageBoard';
 import SendMessageBoard from './SendMessageBoard';
-import { Link } from 'dva/router';
+import NeedLogin from '../../../components/common/NeedLogin.jsx';
 import "./Page.scss";
 
 const { goodsType } = enumerateConstant;
@@ -89,11 +89,12 @@ class Page extends Component {
 
   render() {
 
-    const { commentList, commentTotal, commrntCurPage, publish, getListByOffset, detail } = this.props;
+    const { commentList, commentTotal, commrntCurPage, publish, getListByOffset, detail, location } = this.props;
     let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams(detail);
     const { userInfo } = this.state;
 
     const messageBoardProps = {
+      location,
       commentList,
       commentTotal,
       commrntCurPage,
@@ -103,6 +104,7 @@ class Page extends Component {
 
     const sendMessageProps = {
       publish,
+      location
     }
 
     let userPhoneDom = '';
@@ -110,11 +112,7 @@ class Page extends Component {
       userPhoneDom = userPhone;
     } else {
       userPhoneDom = (
-        <p>
-          请
-          <Link to='/login' > 登录 </Link > |
-          <Link to='/regist'> 注册 </Link> 后查看
-        </p>
+        <NeedLogin location={location} />
       )
     }
 
@@ -165,7 +163,7 @@ class Page extends Component {
 
             <FormItem
               {...this.formItemLayout}
-              label='拾取地点'
+              label='地点'
             >
               {place}
             </FormItem>

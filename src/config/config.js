@@ -1,6 +1,7 @@
 
 const host = '/rabbitApi'
 const pageSize = 5;
+const backPageSize = 10;
 const qiniu = {
   ak: '1Aooo13zVYGwzfZnvEn9d_exPKTb0gjIJKVr_kHQ',
   SK: 'Ma6k_xiYDdiBXY-9qMMWR5D6QZmarwDIakWfmDuk',
@@ -13,6 +14,7 @@ const debugMode = false;
 export {
   host,
   pageSize,
+  backPageSize,
   qiniu,
   debugMode
 };

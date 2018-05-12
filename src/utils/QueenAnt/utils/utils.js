@@ -118,6 +118,23 @@ const dealConstant = (value, type) => {
   return str;
 };
 
+const getQueryString = (name) => {
+  const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
+  const r = window.location.href.split('?')[1].match(reg);
+  if (r != null) return unescape(r[2]);
+  return null;
+};
+
+const jumpUrlAfterLoginOrRegist = () => {
+  let jumpUrl = '';
+  if (getQueryString('to')) {
+    jumpUrl = `/#${getQueryString('to')}`;
+  } else {
+    jumpUrl = '/';
+  }
+  window.location.href = jumpUrl;
+}
+
 export default {
   getUserInfo,
   saveUserInfo,
@@ -135,4 +152,6 @@ export default {
   // hasTradePassword,
   hasCoinTypes,
   getCoinType,
+  getQueryString,
+  jumpUrlAfterLoginOrRegist
 };

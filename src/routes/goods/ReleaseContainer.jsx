@@ -5,8 +5,8 @@ import { message, Card } from 'antd';
 import Page from './release/Page';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 import { Link, routerRedux } from 'dva/router';
+import NeedLogin from '../../components/common/NeedLogin.jsx';
 import utils from '../../utils/tools/utils';
-// import  './MainContainer.scss';
 
 
 class MainContainer extends Component {
@@ -58,9 +58,7 @@ class MainContainer extends Component {
     } else {
       contentDom =
         (<Card className="login-regist-panel flex-center" style={{ height: 300 }}>
-          您还未登录，请先
-          <Link to='/login'> 登录 </Link> |
-          <Link to='/regist'> 注册 </Link>
+          <NeedLogin location={this.props.location} />
         </Card>)
     }
 

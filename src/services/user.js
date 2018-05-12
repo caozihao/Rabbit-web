@@ -8,5 +8,8 @@ export default {
   // 登出
   logout: `${host}/user/logout`,
 
+  batchUpdateStatusByIds: `${host}/user/batchUpdateStatusByIds`,
+
+  getListByOffset: `${host}/user/getListByOffset`,
 };
 

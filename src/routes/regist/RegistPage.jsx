@@ -59,9 +59,9 @@ class RegistPage extends Component {
 
   checkPassword = (rule, value, callback) => {
     if (value && value.length < 8) {
-      callback(commonRules.otherMessage('password', 'min', 8));
+      callback(commonRules.otherMessage('密码', 'min', 8));
     } else if (value && value.length > 20) {
-      callback(commonRules.otherMessage('password', 'max', 20));
+      callback(commonRules.otherMessage('密码', 'max', 20));
     } else {
       callback();
     };
@@ -70,7 +70,7 @@ class RegistPage extends Component {
   checkConfirm = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-      callback(commonRules.otherMessage('password', 'same'));
+      callback(commonRules.otherMessage('密码', 'same'));
     } else {
       callback();
     }

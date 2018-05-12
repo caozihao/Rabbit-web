@@ -94,13 +94,14 @@ class MainContainer extends Component {
   }
 
   render() {
-    const { goods, comment } = this.props;
+    const { goods, comment, location } = this.props;
     const { detail } = goods;
     const { list, total, curPage } = comment;
 
     const pageProps = {
       publish: this.publish,
       getListByOffset: this.getListByOffset,
+      location,
       detail,
       commrntCurPage: curPage,
       commentList: list,

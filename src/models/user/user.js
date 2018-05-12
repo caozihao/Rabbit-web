@@ -6,7 +6,9 @@ export default {
   namespace: 'user',
   state: {
     loading: false,
-    userInfo: ''
+    userInfo: '',
+    list: [],
+    total: 0
   },
   reducers: {
     save(state, action) {
@@ -25,8 +27,6 @@ export default {
     *regist(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
       function success(json) {
-        1
-
         if (resolve && typeof resolve === 'function') {
           resolve(json);
         }
@@ -88,6 +88,54 @@ export default {
         payload: {
           method: 'POST',
           url: service.logout,
+          queryParams,
+          success,
+        },
+      });
+    },
+    *getListByOffset(action, { put, select }) {
+      const { resolve, reject, ...queryParams } = action.payload;
+      function success(json) {
+        const { data: { entities, total } } = json;
+        if (resolve && typeof resolve === 'function') {
+          resolve(json);
+        }
+        return {
+          type: 'save',
+          payload: {
+            list: entities,
+            total,
+          }
+        };
+      }
+      yield put({
+        type: 'common',
+        payload: {
+          method: 'GET',
+          url: service.getListByOffset,
+          queryParams,
+          success,
+        },
+      });
+    },
+
+    *batchUpdateStatusByIds(action, { put }) {
+      const { resolve, reject, ...queryParams } = action.payload;
+
+      function success(json) {
+        if (resolve && typeof resolve === 'function') {
+          resolve(json);
+        }
+        return {
+          type: 'save',
+          payload: {},
+        };
+      }
+      yield put({
+        type: 'common',
+        payload: {
+          method: 'POST',
+          url: service.batchUpdateStatusByIds,
           queryParams,
           success,
         },

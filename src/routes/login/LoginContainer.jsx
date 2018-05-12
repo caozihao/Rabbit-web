@@ -32,7 +32,7 @@ class MainContainer extends Component {
     P.then((data) => {
       message.success('登录成功');
       utils.saveUserInfo(data);
-      this.props.dispatch(routerRedux.push('/'));
+      utils.jumpUrlAfterLoginOrRegist();
     })
   }
 

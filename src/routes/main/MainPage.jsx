@@ -52,7 +52,6 @@ class MainPage extends Component {
 
   render() {
     const { receiveList, searchList, receiveTotal, searchTotal, allList } = this.props;
-
     const searchPageSetting = {
       defaultCurrent: 1,
       total: searchTotal,

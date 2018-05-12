@@ -10,7 +10,9 @@ const { Header, Sider, Content } = Layout;
 class BackMainLayout extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      children: this.getChildren(this.props),
+    };
   }
 
   componentDidMount() {
@@ -18,7 +20,9 @@ class BackMainLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
   }
+
 
   jumpToPage = (pathname) => {
     // return () => {
@@ -46,24 +50,7 @@ class BackMainLayout extends Component {
     const { pathname } = location;
     return (
       <Layout className="BackMainLayout">
-        <Sider
-          trigger={null}
-          collapsible
-          collapsed={this.state.collapsed}
-        >
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={[pathname]}>
-            <Menu.Item key="/back/user" >
-              <Link to='/back/user'><Icon type="user" />用户管理</Link>
-            </Menu.Item>
-            <Menu.Item key="/back/goods">
-              <Link to='/back/goods'><Icon type="gift" />帖子管理</Link>
-            </Menu.Item>
-            <Menu.Item key="/back/comment" >
-              <Link to='/back/comment'> <Icon type="smile-o" />评论管理</Link>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }}>
             <Icon
@@ -72,7 +59,7 @@ class BackMainLayout extends Component {
               onClick={this.toggle}
             />
           </Header>
-          <Content>{this.props.children}</Content>
+          <Content>{this.state.children}</Content>
         </Layout>
       </Layout >
     );
@@ -82,6 +69,5 @@ BackMainLayout.PropTypes = {};
 BackMainLayout.defaultProps = {
   location: {},
 };
-
 
 export default connect()(BackMainLayout);

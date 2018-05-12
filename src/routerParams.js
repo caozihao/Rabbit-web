@@ -90,4 +90,18 @@ export default [
     ],
     page: () => import('./routes/backUser/BackUserContainer.jsx'),
   },
+  {
+    path: '/back/goods',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backGoods/BackGoodsContainer.jsx'),
+  },
+  {
+    path: '/back/comment',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backComment/BackCommentContainer.jsx'),
+  },
 ];
