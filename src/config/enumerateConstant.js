@@ -1,5 +1,5 @@
 export default {
-  goodsType: {
+  postType: {
     1: '钱包',
     2: '手机',
     3: '钥匙',
@@ -20,7 +20,7 @@ export default {
   cardStatus: {
     1: '发布中',
     2: '已结束',
-    3: '已下架',
+    3: '封禁中',
   },
   commentStatus: {
     1: '正常',

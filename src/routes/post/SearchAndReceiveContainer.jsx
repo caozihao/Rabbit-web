@@ -35,7 +35,7 @@ class MainContainer extends Component {
       }
 
       this.props.dispatch({
-        type: "goods/getListByOffset",
+        type: "post/getListByOffset",
         payload: {
           ...values
         }
@@ -53,8 +53,8 @@ class MainContainer extends Component {
 
   render() {
     const { pageType } = this.state;
-    const { goods } = this.props;
-    const { receiveList, searchList, receiveTotal, searchTotal } = goods;
+    const { post } = this.props;
+    const { receiveList, receiveTotal, searchList, searchTotal } = post;
 
     let list = [];
     let total = 0;
@@ -87,9 +87,9 @@ class MainContainer extends Component {
 MainContainer.PropTypes = {};
 MainContainer.defaultProps = {};
 const mapStateToProps = (state) => {
-  const goods = state.goods;
+  const post = state.post;
   return {
-    goods,
+    post,
   };
 };
 

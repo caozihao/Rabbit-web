@@ -32,7 +32,7 @@ class MainContainer extends Component {
   release = (values) => {
     const P = new Promise((resolve, reject) => {
       this.props.dispatch({
-        type: "goods/create",
+        type: "post/create",
         payload: {
           resolve,
           reject,

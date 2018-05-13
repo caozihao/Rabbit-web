@@ -62,7 +62,7 @@ class MessageBoard extends Component {
     const moreButton = this.setMoreButton(commentList, commentTotal);
 
     return (
-      <div className="goods-detail-message-board">
+      <div className="post-detail-message-board">
         <Card hoverable title={<b>留言板</b>}>
           <List
             className="data-list"

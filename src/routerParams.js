@@ -2,7 +2,7 @@
 const commonModels = () => {
   return [
     import('./models/user/user.js'),
-    import('./models/goods/goods.js'),
+    import('./models/post/post.js'),
     import('./models/comment/comment.js'),
     import('./models/common/common.js'),
   ];
@@ -32,28 +32,28 @@ export default [
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/SearchAndReceiveContainer.jsx'),
+    page: () => import('./routes/post/SearchAndReceiveContainer.jsx'),
   },
   {
     path: '/receive',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/SearchAndReceiveContainer.jsx'),
+    page: () => import('./routes/post/SearchAndReceiveContainer.jsx'),
   },
   {
     path: '/detail/:id',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/DetailContainer.jsx'),
+    page: () => import('./routes/post/DetailContainer.jsx'),
   },
   {
     path: '/release',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/goods/ReleaseContainer.jsx'),
+    page: () => import('./routes/post/ReleaseContainer.jsx'),
   },
   {
     path: '/about_us',
@@ -91,11 +91,11 @@ export default [
     page: () => import('./routes/backUser/BackUserContainer.jsx'),
   },
   {
-    path: '/back/goods',
+    path: '/back/post',
     models: () => [
       ...commonModels(),
     ],
-    page: () => import('./routes/backGoods/BackGoodsContainer.jsx'),
+    page: () => import('./routes/backPost/BackPostContainer.jsx'),
   },
   {
     path: '/back/comment',

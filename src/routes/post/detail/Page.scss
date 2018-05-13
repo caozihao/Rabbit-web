@@ -1,10 +1,10 @@
 @import '../../../common.scss';
-.goods-detail-page {
+.post-detail-page {
   margin-top: $md;
   .title {
     text-align: center;
   }
-  .goods-picture {
+  .post-picture {
     width: 300px;
   }
   .title-brief {
@@ -16,7 +16,7 @@
     }
     width: 100%;
   }
-  .goods-form {
+  .post-form {
     border-top: 1px solid $line-color;
   }
   .button-area {

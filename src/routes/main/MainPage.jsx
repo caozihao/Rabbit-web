@@ -9,7 +9,7 @@ import dataRender from '../../utils/QueenAnt/utils/dataRender';
 import { Link } from 'dva/router';
 import './MainPage.scss';
 
-const { goodsType } = enumerateConstant;
+const { postType } = enumerateConstant;
 
 class MainPage extends Component {
 
@@ -29,11 +29,11 @@ class MainPage extends Component {
 
 
   dealWithItem = (item) => {
-    const { place, type, category, createdTime, userNickname, id } = item;
+    const { goodsPlace, type, goodsCategory, createdTime, userNickname, id } = item;
     let typeStr = '';
-    let categoryStr = <span className="deepen-word">{goodsType[category]}</span>;
+    let goodsCategoryStr = <span className="deepen-word">{postType[goodsCategory]}</span>;
     let time = <span className="deepen-word">{dataRender.renderTime(createdTime)}</span>;
-    let placeStr = <span className="deepen-word">{place}</span>
+    let goodsPlaceStr = <span className="deepen-word">{goodsPlace}</span>
     // let phoneStr = userPhone.toString();
     // let frontWord = phoneStr.substring(0, 3);
     // let endWord = phoneStr.substring(phoneStr.length - 3, phoneStr.length);
@@ -45,8 +45,7 @@ class MainPage extends Component {
       typeStr = '发现';
     }
 
-    return <p>{userNickname} 在 {time} (时间) {placeStr}(地点) {typeStr} {categoryStr} (物品)<span className="click-seeing"><Link to={`/detail/${id}`}>点我查看</Link ></span></p>
-
+    return <p>{userNickname} 在 {time} (时间) {goodsPlaceStr}(地点) {typeStr} {goodsCategoryStr} (物品)<span className="click-seeing"><Link to={`/detail/${id}`}>点我查看</Link ></span></p>
 
   }
 

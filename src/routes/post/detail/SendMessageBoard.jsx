@@ -32,13 +32,15 @@ class SendMessageBoard extends Component {
 
 
   handleSubmit = (e) => {
-
     const { userInfo } = this.state;
+    const { postId,postTitle } = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         values.userId = userInfo.id;
         values.userNickname = userInfo.nickname;
+        values.postId = postId;
+        values.postTitle = postTitle;
         this.props.publish(values);
         this.props.form.resetFields();
       }
@@ -63,7 +65,7 @@ class SendMessageBoard extends Component {
     }
 
     return (
-      <div className="goods-detail-message-board">
+      <div className="post-detail-message-board">
         <Card hoverable title={<b>我要留言</b>}>
           <Form onSubmit={this.handleSubmit}>
             <FormItem
@@ -91,5 +93,7 @@ class SendMessageBoard extends Component {
 SendMessageBoard.PropTypes = {};
 SendMessageBoard.defaultProps = {
   publish: () => { },
+  postId:'',
+  postTitle:''
 };
 export default Form.create()(SendMessageBoard);

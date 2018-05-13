@@ -11,28 +11,28 @@ import * as qiniuJs from 'qiniu-js';
 
 const { ak, SK, bucket } = qiniu;
 
-const { goodsType } = enumerateConstant;
+const { postType } = enumerateConstant;
 const { TextArea } = Input;
 const FormItem = Form.Item;
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
 
-let goodsInitialValue = {
-  articleTitle: '',
-  place: '',
-  articleContent: '',
+let postInitialValue = {
+  title: '',
+  goodsPlace: '',
+  content: '',
 };
 
 if (debugMode) {
-  goodsInitialValue = {
-    articleTitle: '寻找一个皮夹子',
-    place: '图书馆',
-    articleContent: '已经放到门卫室了',
+  postInitialValue = {
+    title: '寻找一个皮夹子',
+    goodsPlace: '图书馆',
+    content: '已经放到门卫室了',
   }
 }
 
 
-class GoodsReleasePage extends Component {
+class PostReleasePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,14 +69,14 @@ class GoodsReleasePage extends Component {
 
   }
 
-  getGoodsType = () => {
-    let goodsTypeOption = [];
-    for (let i in goodsType) {
-      goodsTypeOption.push(
-        <Option key={i} value={i}>{goodsType[i]}</Option>
+  getPostType = () => {
+    let postTypeOption = [];
+    for (let i in postType) {
+      postTypeOption.push(
+        <Option key={i} value={i}>{postType[i]}</Option>
       )
     }
-    return goodsTypeOption;
+    return postTypeOption;
   }
 
 
@@ -193,19 +193,19 @@ class GoodsReleasePage extends Component {
     const { getFieldDecorator } = this.props.form;
     const { userInfo } = this.state;
     const { nickname, phone } = userInfo;
-    const goodsOption = this.getGoodsType();
+    const postOption = this.getPostType();
     const { uploadImgUrl, curImgHeight, loading } = this.state;
-    const { articleTitle, place, articleContent } = goodsInitialValue;
+    const { title, goodsPlace, content } = postInitialValue;
 
 
     return (
       <Spin
-        className="goods-release-spinging"
+        className="post-release-spinging"
         size="large"
         spinning={loading}>
-        <div className="goods-release-page">
+        <div className="post-release-page">
           <Card hoverable title="发布">
-            <Form className="goods-form" onSubmit={this.handleSubmit}>
+            <Form className="post-form" onSubmit={this.handleSubmit}>
               <FormItem
                 {...this.formItemLayout}
                 label="类型"
@@ -229,8 +229,8 @@ class GoodsReleasePage extends Component {
                 {...this.formItemLayout}
                 label='标题'
               >
-                {getFieldDecorator('articleTitle', {
-                  initialValue: articleTitle,
+                {getFieldDecorator('title', {
+                  initialValue: title,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', '文章标题'),
@@ -262,7 +262,7 @@ class GoodsReleasePage extends Component {
                 label="物品种类"
                 hasFeedback
               >
-                {getFieldDecorator('category', {
+                {getFieldDecorator('goodsCategory', {
                   initialValue: '1',
                   rules: [
                     {
@@ -276,7 +276,7 @@ class GoodsReleasePage extends Component {
                     optionFilterProp={"children"}
                     filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                     onChange={this.handleChangeSelect}>
-                    {goodsOption}
+                    {postOption}
                   </Select>
                 )}
               </FormItem>
@@ -299,8 +299,8 @@ class GoodsReleasePage extends Component {
                 {...this.formItemLayout}
                 label='地点'
               >
-                {getFieldDecorator('place', {
-                  initialValue: place,
+                {getFieldDecorator('goodsPlace', {
+                  initialValue: goodsPlace,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', '拾取地点'),
@@ -317,8 +317,8 @@ class GoodsReleasePage extends Component {
 
                 label='备注'
               >
-                {getFieldDecorator('articleContent', {
-                  initialValue: articleContent,
+                {getFieldDecorator('content', {
+                  initialValue: content,
                   rules: [
                     {
                       required: true, message: commonRules.requireMessage('require', 'content'),
@@ -342,8 +342,8 @@ class GoodsReleasePage extends Component {
   }
 }
 
-GoodsReleasePage.PropTypes = {};
-GoodsReleasePage.defaultProps = {
+PostReleasePage.PropTypes = {};
+PostReleasePage.defaultProps = {
   release: () => { }
 };
-export default Form.create()(GoodsReleasePage);
+export default Form.create()(PostReleasePage);

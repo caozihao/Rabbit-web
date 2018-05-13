@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Table, Row, Col, Select, DatePicker, Input, Button } from 'antd';
-import enumerateConstant from '../../config/enumerateConstant';
-import { pageSize } from '../../config/config';
+import { connect } from 'dva';
+import { Card, Table, Row, Col, Select, DatePicker, Input, Button, Pagination } from 'antd';
+import { Link } from 'dva/router';
+import enumerateConstant from '../.././../config/enumerateConstant';
+import { pageSize } from '../../../config/config';
 import TableParams from './TableParams';
-import "./BackGoodsPage.scss";
+import "./Page.scss";
 
-const { goodsType } = enumerateConstant;
+const { postType } = enumerateConstant;
 const { RangePicker } = DatePicker;
 const Option = Select.Option;
 
-class BackGoodsPage extends Component {
+class PostListPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goodsTypeOption: [],
-      category: '',
+      postTypeOption: [],
+      goodsCategory: '',
       startTime: '',
       endTime: '',
-      place: ''
+      goodsPlace: ''
     }
   }
 
@@ -28,9 +30,9 @@ class BackGoodsPage extends Component {
 
   componentWillReceiveProps(nextProps) { }
 
-  handleChangeSelect = (category) => {
+  handleChangeSelect = (goodsCategory) => {
     this.setState({
-      category
+      goodsCategory
     })
   }
 
@@ -43,19 +45,19 @@ class BackGoodsPage extends Component {
 
   handleChangeInput = (e) => {
     this.setState({
-      place: e.target.value,
+      goodsPlace: e.target.value,
     })
   }
 
-  getGoodsType = () => {
-    let goodsTypeOption = [];
-    for (let i in goodsType) {
-      goodsTypeOption.push(
-        <Option key={i} value={i}>{goodsType[i]}</Option>
+  getPostType = () => {
+    let postTypeOption = [];
+    for (let i in postType) {
+      postTypeOption.push(
+        <Option key={i} value={i}>{postType[i]}</Option>
       )
     }
-    goodsTypeOption.unshift(<Option key={-1} value={"-1"}>全部</Option>)
-    return goodsTypeOption;
+    postTypeOption.unshift(<Option value={""}>全部</Option>)
+    return postTypeOption;
   }
 
 
@@ -65,12 +67,12 @@ class BackGoodsPage extends Component {
   }
 
   getParams = () => {
-    const { category, startTime, endTime, place } = this.state;
+    const { goodsCategory, startTime, endTime, goodsPlace } = this.state;
     return {
-      category,
+      goodsCategory,
       startTime,
       endTime,
-      place,
+      goodsPlace,
       pageNo: 1
     }
   }
@@ -85,7 +87,7 @@ class BackGoodsPage extends Component {
     const { dataList, total } = this.props;
     let dataSource = dataList;
 
-    const goodsOption = this.getGoodsType();
+    const postOption = this.getPostType();
     const pageSetting = {
       defaultCurrent: 1,
       total,
@@ -94,17 +96,17 @@ class BackGoodsPage extends Component {
     }
 
     return (
-      <div className="BackGoodsPage com-margin-top">
+      <div className="post-list-page com-margin-top">
         <Card hoverable title="筛选条件">
           <Row>
             <Col span={6}>失物类别：
-               <Select defaultValue="-1"
+               <Select defaultValue=""
                 style={{ width: 200 }}
                 showSearch={true}
                 optionFilterProp={"children"}
                 filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                 onChange={this.handleChangeSelect}>
-                {goodsOption}
+                {postOption}
               </Select>
             </Col>
             <Col span={9}>丢失时间：
@@ -132,8 +134,8 @@ class BackGoodsPage extends Component {
   }
 }
 
-BackGoodsPage.PropTypes = {};
-BackGoodsPage.defaultProps = {
+PostListPage.PropTypes = {};
+PostListPage.defaultProps = {
   getListByOffset: () => { },
   pageType: '',
   dataList: [],
@@ -141,4 +143,4 @@ BackGoodsPage.defaultProps = {
 };
 
 
-export default BackGoodsPage;
+export default PostListPage;

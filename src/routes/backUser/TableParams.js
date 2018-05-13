@@ -17,7 +17,7 @@ export default [
     key: 'phone',
   },
   {
-    title: '类型',
+    title: '状态',
     dataIndex: 'status',
     key: 'status',
     render: (text, record) => {
@@ -39,14 +39,6 @@ export default [
     title: '创建时间',
     dataIndex: 'createdTime',
     key: 'createdTime',
-    render: (text, record) => {
-      return dataRender.renderTime(text);
-    }
-  },
-  {
-    title: '创建时间',
-    dataIndex: 'updatedTime',
-    key: 'updatedTime',
     render: (text, record) => {
       return dataRender.renderTime(text);
     }

@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Table, Row, Col, Input, Button } from 'antd';
+import { Card, Table, Row, Col, Input, Button, Select } from 'antd';
 import enumerateConstant from '../../config/enumerateConstant';
 import { pageSize } from '../../config/config';
 import TableParams from './TableParams';
 import "./BackUserPage.scss";
+import utils from '../../utils/QueenAnt/utils/utils';
+
+const Option = Select.Option;
 
 class BackUserPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       phone: '',
-      nickname: ''
+      nickname: '',
+      status: ''
     }
-    this.TableParams = (() => {
+    this.TableParams = TableParams;
+  }
+
+  componentWillMount() {
+    if (!utils.ifColmnsHasSameKey(TableParams, 'control')) {
       TableParams.push({
         title: '操作',
         dataIndex: 'control',
@@ -28,9 +36,10 @@ class BackUserPage extends Component {
           }
           return result;
         }
-      })
-      return TableParams;
-    })()
+      });
+
+      this.TableParams = TableParams;
+    }
   }
 
   changeStatus = (id, status) => {
@@ -39,7 +48,6 @@ class BackUserPage extends Component {
       status
     }
     this.props.batchUpdateStatusByIds(param);
-
   }
 
   componentDidMount() { }
@@ -53,16 +61,25 @@ class BackUserPage extends Component {
     this.setState(obj);
   }
 
+
+  handleChangeSelect = (type, value) => {
+    let obj = {
+      [type]: value,
+    }
+    this.setState(obj);
+  }
+
   getListByOffset = () => {
     const params = this.getParams();
     this.props.getListByOffset(params);
   }
 
   getParams = () => {
-    const { phone, nickname } = this.state;
+    const { phone, nickname, status } = this.state;
     return {
       phone,
       nickname,
+      status
     }
   }
 
@@ -93,7 +110,19 @@ class BackUserPage extends Component {
             <Col span={6}> 昵称：
             <Input onChange={this.handleChangeInput.bind(this, 'nickname')} style={{ width: 200 }} />
             </Col>
-            <Col span={3}>
+            <Col span={3}>状态：
+               <Select defaultValue=""
+                style={{ width: 100 }}
+                showSearch={true}
+                optionFilterProp={"children"}
+                filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                onChange={this.handleChangeSelect.bind(this, 'status')}>
+                <Option value="">全部</Option>
+                <Option value="1">正常</Option>
+                <Option value="2">已冻结</Option>
+              </Select>
+            </Col>
+            <Col span={2}>
               <Button type="primary" style={{ width: 100 }} onClick={this.getListByOffset}>搜索</Button>
             </Col>
           </Row>

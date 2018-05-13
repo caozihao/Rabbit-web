@@ -165,7 +165,7 @@ export default FormGen;
 
 // 格式说明
 // formItems: [
-  //   'categoryId',
+  //   'goodsCategoryId',
   //   'description',
   //   {
   //     name: 'icon',
@@ -187,7 +187,7 @@ export default FormGen;
   //         },
   //       },
   //       {
-  //         name: 'categoryId2',
+  //         name: 'goodsCategoryId2',
   //         otherProps: {},
   //       },
   //       'raisePeriod',

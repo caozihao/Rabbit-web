@@ -1,17 +1,17 @@
 // import { message } from 'antd';
 import common from '../../utils/QueenAnt/utils/commonEffect';
-import service from '../../services/goods';
+import service from '../../services/post';
 
 export default {
-  namespace: 'goods',
+  namespace: 'post',
   state: {
     loading: false,
     receiveList: [],
     searchList: [],
     allList: [],
+    allTotal: 0,
     receiveTotal: 0,
     searchTotal: 0,
-    allTotal: 0,
     detail: '',
   },
   reducers: {
@@ -100,7 +100,7 @@ export default {
     },
     *getListByOffset(action, { put }) {
       const { resolve, reject, ...queryParams } = action.payload;
-      const { type } = queryParams;
+      const { type, way } = queryParams;
 
       function success(json) {
         const { data: { entities, total } } = json;
@@ -110,7 +110,8 @@ export default {
 
         let payload = {};
 
-        if (!type) {
+        // 没有传此参数或者way=back
+        if (!type || way === 'back') {
           payload = {
             allList: entities,
             allTotal: total
@@ -132,6 +133,29 @@ export default {
         payload: {
           method: 'GET',
           url: service.getListByOffset,
+          queryParams,
+          success,
+        },
+      });
+    },
+
+    *batchUpdateStatusByIds(action, { put }) {
+      const { resolve, reject, ...queryParams } = action.payload;
+
+      function success(json) {
+        if (resolve && typeof resolve === 'function') {
+          resolve(json);
+        }
+        return {
+          type: 'save',
+          payload: {},
+        };
+      }
+      yield put({
+        type: 'common',
+        payload: {
+          method: 'POST',
+          url: service.batchUpdateStatusByIds,
           queryParams,
           success,
         },

@@ -2,11 +2,11 @@
 
 
 import { Link } from 'dva/router';
-import enumerateConstant from '../../config/enumerateConstant';
-import dataRender from '../../utils/QueenAnt/utils/dataRender';
-import genData from '../../utils/tools/genData';
+import enumerateConstant from '../../../config/enumerateConstant';
+import dataRender from '../../../utils/QueenAnt/utils/dataRender';
+import genData from '../../../utils/tools/genData';
 
-const { goodsType } = enumerateConstant;
+const { postType } = enumerateConstant;
 
 export default [
   {
@@ -18,8 +18,8 @@ export default [
     }
   }, {
     title: '文章标题',
-    dataIndex: 'articleTitle',
-    key: 'articleTitle',
+    dataIndex: 'title',
+    key: 'title',
     render: (text, record) => {
       return (
         <Link to={`/detail/${record.id}`}>{text}</Link>)
@@ -27,16 +27,16 @@ export default [
   },
   {
     title: '类型',
-    dataIndex: 'category',
-    key: 'category',
+    dataIndex: 'goodsCategory',
+    key: 'goodsCategory',
     render: (text, record) => {
-      return (goodsType[text]);
+      return (postType[text]);
     }
   },
   {
     title: '地点',
-    dataIndex: 'place',
-    key: 'place',
+    dataIndex: 'goodsPlace',
+    key: 'goodsPlace',
   },
   {
     title: '创建时间',

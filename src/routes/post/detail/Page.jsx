@@ -10,7 +10,7 @@ import SendMessageBoard from './SendMessageBoard';
 import NeedLogin from '../../../components/common/NeedLogin.jsx';
 import "./Page.scss";
 
-const { goodsType } = enumerateConstant;
+const { postType } = enumerateConstant;
 const FormItem = Form.Item;
 
 class Page extends Component {
@@ -76,8 +76,8 @@ class Page extends Component {
           case "createdTime":
             copyDetail[i] = dataRender.renderTime(value);
             break;
-          case "category":
-            copyDetail[i] = goodsType[value];
+          case "goodsCategory":
+            copyDetail[i] = postType[value];
             break;
           default: break;
         }
@@ -90,7 +90,7 @@ class Page extends Component {
   render() {
 
     const { commentList, commentTotal, commrntCurPage, publish, getListByOffset, detail, location } = this.props;
-    let { articleContent, articleTitle, type, category, createdTime, uploadFilename, place, status, userNickname, userPhone, articleReadNum, userId } = this.dealWithParams(detail);
+    let { id,content, title, type, goodsCategory, createdTime, uploadFilename, goodsPlace, status, userNickname, userPhone, readNum, userId } = this.dealWithParams(detail);
     const { userInfo } = this.state;
 
     const messageBoardProps = {
@@ -103,6 +103,8 @@ class Page extends Component {
     }
 
     const sendMessageProps = {
+      postId:id,
+      postTitle:title,
       publish,
       location
     }
@@ -117,15 +119,15 @@ class Page extends Component {
     }
 
     return (
-      <div className="goods-detail-page">
+      <div className="post-detail-page">
         <Card hoverable>
-          <h1 className="title">{articleTitle}</h1>
+          <h1 className="title">{title}</h1>
           <ul className="title-brief clearfix">
             <li><b>发布时间 : </b> {createdTime} </li>
-            <li><b>浏览量 : </b>{articleReadNum || 0}</li>
+            <li><b>浏览量 : </b>{readNum || 0}</li>
             <li><b>状态 : </b>{status}</li>
           </ul>
-          <Form className="goods-form">
+          <Form className="post-form">
 
             <FormItem
               {...this.formItemLayout}
@@ -158,20 +160,20 @@ class Page extends Component {
               {...this.formItemLayout}
               label="物品种类"
             >
-              {category}
+              {goodsCategory}
             </FormItem>
 
             <FormItem
               {...this.formItemLayout}
               label='地点'
             >
-              {place}
+              {goodsPlace}
             </FormItem>
             <FormItem
               {...this.formItemLayout}
               label='备注'
             >
-              {articleContent}
+              {content}
             </FormItem>
           </Form>
 

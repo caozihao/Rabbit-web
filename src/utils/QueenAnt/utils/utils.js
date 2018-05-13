@@ -120,8 +120,10 @@ const dealConstant = (value, type) => {
 
 const getQueryString = (name) => {
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
-  const r = window.location.href.split('?')[1].match(reg);
-  if (r != null) return unescape(r[2]);
+  if( window.location.href.split('?')[1]){
+    const r = window.location.href.split('?')[1].match(reg);
+    if (r != null) return unescape(r[2]);
+  }
   return null;
 };
 
@@ -133,6 +135,19 @@ const jumpUrlAfterLoginOrRegist = () => {
     jumpUrl = '/';
   }
   window.location.href = jumpUrl;
+}
+
+const ifColmnsHasSameKey = (arr, key) => {
+  let result = false;
+  if (arr.length) {
+    arr.some((v, i) => {
+      if (v.dataIndex === key) {
+        result = true;
+        return true;
+      }
+    })
+  }
+  return result;
 }
 
 export default {
@@ -153,5 +168,6 @@ export default {
   hasCoinTypes,
   getCoinType,
   getQueryString,
-  jumpUrlAfterLoginOrRegist
+  jumpUrlAfterLoginOrRegist,
+  ifColmnsHasSameKey
 };

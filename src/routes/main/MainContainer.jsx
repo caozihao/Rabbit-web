@@ -32,7 +32,7 @@ class MainContainer extends Component {
       }
 
       this.props.dispatch({
-        type: "goods/getListByOffset",
+        type: "post/getListByOffset",
         payload: {
           ...values
         }
@@ -43,7 +43,7 @@ class MainContainer extends Component {
 
 
   render() {
-    const { goods } = this.props;
+    const { post } = this.props;
 
     return (
       <MainLayout
@@ -52,7 +52,7 @@ class MainContainer extends Component {
         needLogin={false}
       // footer={<MainFooter />}
       >
-        <MainPage {...goods} getListByOffset={this.getListByOffset} />
+        <MainPage {...post} getListByOffset={this.getListByOffset} />
       </MainLayout>
     );
   }
@@ -60,9 +60,9 @@ class MainContainer extends Component {
 MainContainer.PropTypes = {};
 MainContainer.defaultProps = {};
 const mapStateToProps = (state) => {
-  const goods = state.goods;
+  const post = state.post;
   return {
-    goods,
+    post,
   };
 };
 export default connect(mapStateToProps)(MainContainer);

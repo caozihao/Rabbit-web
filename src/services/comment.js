@@ -5,6 +5,7 @@ export default {
   create: `${host}/comment/create`,
   // 分页
   getListByOffset: `${host}/comment/getListByOffset`,
+  batchUpdateStatusByIds: `${host}/comment/batchUpdateStatusByIds`,
 
 };
 

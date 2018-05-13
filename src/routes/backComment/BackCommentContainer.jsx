@@ -28,9 +28,9 @@ class BackCommentContainer extends Component {
 BackCommentContainer.PropTypes = {};
 BackCommentContainer.defaultProps = {};
 const mapStateToProps = (state) => {
-  const goods = state.goods;
+  const post = state.post;
   return {
-    goods,
+    post,
   };
 };
 export default connect(mapStateToProps)(BackCommentContainer);

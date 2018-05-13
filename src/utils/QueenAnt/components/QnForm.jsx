@@ -218,7 +218,7 @@ QnForm.defaultProps = {
   // if name == GROUP  obj = {name:"GROUP",children:[item1,item2,item3...]}
   formItems: [],
   // formItems: [
-  //   'categoryId',
+  //   'goodsCategoryId',
   //   'description',
   //   {
   //     name: 'icon',
@@ -240,7 +240,7 @@ QnForm.defaultProps = {
   //         },
   //       },
   //       {
-  //         name: 'categoryId2',
+  //         name: 'goodsCategoryId2',
   //         otherProps: {},
   //       },
   //       'raisePeriod',

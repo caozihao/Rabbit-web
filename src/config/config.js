@@ -9,7 +9,7 @@ const qiniu = {
   privateHost: 'http://p7zobqagh.bkt.clouddn.com',
   publicHost: 'http://p83ybv56r.bkt.clouddn.com'
 }
-const debugMode = false;
+const debugMode = true;
 
 export {
   host,

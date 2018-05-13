@@ -72,7 +72,7 @@ const validateDict = {
   }
 }
 const otherMessageDict = {
-  password: (item, len) => {
+  '密码': (item, len) => {
     return {
       max: {
         CN: `${item} 不能超过 ${len} 字符`,

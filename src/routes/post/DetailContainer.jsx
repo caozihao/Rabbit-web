@@ -27,7 +27,7 @@ class MainContainer extends Component {
 
   getById = (id) => {
     this.props.dispatch({
-      type: "goods/getById",
+      type: "post/getById",
       payload: {
         id
       }
@@ -36,7 +36,7 @@ class MainContainer extends Component {
 
   updateReadNumById = (id) => {
     this.props.dispatch({
-      type: "goods/updateReadNumById",
+      type: "post/updateReadNumById",
       payload: {
         id
       }
@@ -52,7 +52,6 @@ class MainContainer extends Component {
   }
 
   publish = (values) => {
-    values.goodsId = this.id;
     const P = new Promise((resolve, reject) => {
       this.props.dispatch({
         type: "comment/create",
@@ -74,7 +73,7 @@ class MainContainer extends Component {
   getListByOffset = (values) => {
     if (values) {
 
-      values.goodsId = this.id;
+      values.postId = this.id;
       if (!values.pageNo) {
         values.pageNo = 1;
       }
@@ -94,8 +93,8 @@ class MainContainer extends Component {
   }
 
   render() {
-    const { goods, comment, location } = this.props;
-    const { detail } = goods;
+    const { post, comment, location } = this.props;
+    const { detail } = post;
     const { list, total, curPage } = comment;
 
     const pageProps = {
@@ -121,10 +120,10 @@ class MainContainer extends Component {
 MainContainer.PropTypes = {};
 MainContainer.defaultProps = {};
 const mapStateToProps = (state) => {
-  const goods = state.goods;
+  const post = state.post;
   const comment = state.comment;
   return {
-    goods,
+    post,
     comment
   };
 };

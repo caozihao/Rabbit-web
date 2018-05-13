@@ -56,8 +56,8 @@ class BackMainLayout extends Component {
             <Menu.Item key="/back/user" >
               <Link to='/back/user'><Icon type="user" />用户管理</Link>
             </Menu.Item>
-            <Menu.Item key="/back/goods">
-              <Link to='/back/goods'><Icon type="gift" />帖子管理</Link>
+            <Menu.Item key="/back/post">
+              <Link to='/back/post'><Icon type="gift" />帖子管理</Link>
             </Menu.Item>
             <Menu.Item key="/back/comment" >
               <Link to='/back/comment'> <Icon type="smile-o" />评论管理</Link>
