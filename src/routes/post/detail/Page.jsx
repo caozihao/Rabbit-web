@@ -105,6 +105,8 @@ class Page extends Component {
     const sendMessageProps = {
       postId:id,
       postTitle:title,
+      publishUserId: userId,
+      publishUserNickname:userNickname,
       publish,
       location
     }

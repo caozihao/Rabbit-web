@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Table, Row, Col, Input, Button, Select } from 'antd';
+import { Card, Table, Row, Col, Select, DatePicker, Input, Button } from 'antd';
 import enumerateConstant from '../../config/enumerateConstant';
-import { pageSize } from '../../config/config';
+import { backPageSize as pageSize  } from '../../config/config';
 import TableParams from './TableParams';
-import "./BackUserPage.scss";
 import utils from '../../utils/QueenAnt/utils/utils';
+import "./BackCommentPage.scss";
 
 const Option = Select.Option;
 
-class BackUserPage extends Component {
+class BackCommentPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phone: '',
-      nickname: '',
-      status: ''
+      postId: '',
+      postTitle: '',
+      status: '',
+      userNickname:'',
+      publishUserNickname:''
     }
-    this.TableParams = TableParams;
+  }
+
+  componentDidMount() {
+
   }
 
   componentWillMount() {
@@ -30,9 +35,9 @@ class BackUserPage extends Component {
           const { status } = record;
           let result = '';
           if (status === 1) {
-            result = <a href="javascript:void(0)" className="col-red" onClick={this.changeStatus.bind(this, record.id, 2)}>封禁</a>
+            result = <a href="javascript:void(0)" className="col-red" onClick={this.changeStatus.bind(this, record.id, 2)}>屏蔽</a>
           } else if (status === 2) {
-            result = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}>解封</a>
+            result = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}>解除</a>
           }
           return result;
         }
@@ -50,17 +55,7 @@ class BackUserPage extends Component {
     this.props.batchUpdateStatusByIds(param);
   }
 
-  componentDidMount() { }
-
   componentWillReceiveProps(nextProps) { }
-
-  handleChangeInput = (type, e) => {
-    let obj = {
-      [type]: e.target.value,
-    }
-    this.setState(obj);
-  }
-
 
   handleChangeSelect = (type, value) => {
     let obj = {
@@ -69,17 +64,28 @@ class BackUserPage extends Component {
     this.setState(obj);
   }
 
+  handleChangeInput = (type,e) => {
+    let obj = {
+      [type]: e.target.value,
+    }
+     this.setState(obj);
+  }
+
   getListByOffset = () => {
     const params = this.getParams();
     this.props.getListByOffset(params);
   }
 
   getParams = () => {
-    const { phone, nickname, status } = this.state;
+
+    const { postId, postTitle, status,userNickname,publishUserNickname } = this.state;
     return {
-      phone,
-      nickname,
-      status
+      postId,
+      postTitle,
+      status,
+      userNickname,
+      publishUserNickname,
+      pageNo: 1
     }
   }
 
@@ -90,8 +96,8 @@ class BackUserPage extends Component {
   }
 
   render() {
-    const { dataList, total } = this.props;
-    let dataSource = dataList;
+    const { list, total } = this.props;
+    let dataSource = list;
 
     const pageSetting = {
       defaultCurrent: 1,
@@ -101,15 +107,9 @@ class BackUserPage extends Component {
     }
 
     return (
-      <div className="BackUserPage com-margin-top">
+      <div className="BackCommentPage com-margin-top">
         <Card hoverable title="筛选条件">
           <Row>
-            <Col span={6}> 手机号：
-            <Input onChange={this.handleChangeInput.bind(this, 'phone')} style={{ width: 200 }} />
-            </Col>
-            <Col span={6}> 昵称：
-            <Input onChange={this.handleChangeInput.bind(this, 'nickname')} style={{ width: 200 }} />
-            </Col>
             <Col span={3}>状态：
                <Select defaultValue=""
                 style={{ width: 100 }}
@@ -119,11 +119,20 @@ class BackUserPage extends Component {
                 onChange={this.handleChangeSelect.bind(this, 'status')}>
                 <Option value="">全部</Option>
                 <Option value="1">正常</Option>
-                <Option value="2">已冻结</Option>
+                <Option value="2">已屏蔽</Option>
               </Select>
             </Col>
+            <Col span={4}>发布人：
+            <Input onChange={this.handleChangeInput.bind(this,'publishUserNickname')} style={{ width: 150 }} />
+            </Col>
+            <Col span={4}>评论人：
+            <Input onChange={this.handleChangeInput.bind(this,'userNickname')} style={{ width: 150 }} />
+            </Col>
+            <Col span={6}>帖子标题：
+            <Input onChange={this.handleChangeInput.bind(this,'postTitle')} style={{ width: 200 }} />
+            </Col>
             <Col span={2}>
-              <Button type="primary" style={{ width: 100 }} onClick={this.getListByOffset}>搜索</Button>
+              <Button type="primary" onClick={this.getListByOffset}>搜索</Button>
             </Col>
           </Row>
         </Card>
@@ -131,19 +140,21 @@ class BackUserPage extends Component {
           <Table
             rowKey={item => item.id}
             dataSource={dataSource}
-            columns={this.TableParams}
+            columns={TableParams}
             pagination={pageSetting} />
         </Card>
       </div>)
   }
 }
 
-BackUserPage.PropTypes = {};
-BackUserPage.defaultProps = {
+BackCommentPage.PropTypes = {};
+BackCommentPage.defaultProps = {
   getListByOffset: () => { },
   batchUpdateStatusByIds: () => { },
+  pageType: '',
   dataList: [],
   total: 0
 };
 
-export default BackUserPage;
+
+export default BackCommentPage;

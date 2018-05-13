@@ -43,7 +43,12 @@ class BackMainLayout extends Component {
 
   render() {
     const { location } = this.props;
-    const { pathname } = location;
+    let { pathname } = location;
+    if(pathname.indexOf('/back/comment') !== -1){
+      pathname = '/back/comment';
+    }
+
+    console.log('pathname ->',pathname);
     return (
       <Layout className="BackMainLayout">
         <Sider

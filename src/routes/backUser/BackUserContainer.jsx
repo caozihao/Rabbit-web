@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { message } from 'antd';
 import { connect } from 'dva';
 // import MainPage from './MainPage.jsx';
-import { backPageSize as defaultPageSize } from '../../config/config';
+import { backPageSize as pageSize } from '../../config/config';
 import BackMainLayout from '../../components/layout/BackMainLayout.jsx';
 import BackUserPage from './BackUserPage';
 
@@ -25,7 +25,7 @@ class BackUserContainer extends Component {
       }
 
       if (!values.pageSize) {
-        values.pageSize = defaultPageSize;
+        values.pageSize = pageSize;
       }
 
       this.props.dispatch({

@@ -61,7 +61,7 @@ class QnTable extends Component {
   }
 
   render() {
-    // log('defaultPageSize', this.props.defaultPageSize);
+    // log('pageSize', this.props.pageSize);
     const {
       columns,
       dataSource,
@@ -81,7 +81,7 @@ class QnTable extends Component {
         showSizeChanger: true,
         onChange: handlePageChange,
         onShowSizeChange: handlePageSizeChange,
-        defaultPageSize: this.props.defaultPageSize || 10,
+        pageSize: this.props.pageSize || 10,
         total,
         showTotal: (totalCount, range) => {
           return `${range[0]}-${range[1]} 共 ${totalCount} 条`;
@@ -166,7 +166,7 @@ QnTable.defaultProps = {
   rowKey: item => item.id,
   bordered: true,
   otherProps: {},
-  defaultPageSize: 10,
+  pageSize: 10,
   scroll: {
     x: false,
     y: false,

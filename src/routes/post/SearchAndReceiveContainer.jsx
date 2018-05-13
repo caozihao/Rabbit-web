@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import Page from './list/Page';
-import { pageSize as defaultPageSize } from '../../config/config';
+import { pageSize as pageSize } from '../../config/config';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 // import  './MainContainer.scss';
 
@@ -22,6 +22,8 @@ class MainContainer extends Component {
   getListByOffset = (values) => {
     if (values) {
 
+       values.status = 1;
+
       if (!values.type) {
         values.type = this.state.pageType;
       }
@@ -31,7 +33,7 @@ class MainContainer extends Component {
       }
 
       if (!values.pageSize) {
-        values.pageSize = defaultPageSize;
+        values.pageSize = pageSize;
       }
 
       this.props.dispatch({

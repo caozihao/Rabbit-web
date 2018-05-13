@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Table, Row, Col, Select, DatePicker, Input, Button } from 'antd';
 import enumerateConstant from '../../config/enumerateConstant';
-import { pageSize } from '../../config/config';
+import { backPageSize as pageSize } from '../../config/config';
+import { Link } from 'dva/router';
 import TableParams from './TableParams';
 import utils from '../../utils/QueenAnt/utils/utils';
 import "./BackPostPage.scss";
@@ -36,18 +37,19 @@ class BackPostPage extends Component {
         dataIndex: 'control',
         key: 'control',
         render: (text, record) => {
-          const { status } = record;
-          let endDom = <a href="javascript:void(0)" className="col-grey" onClick={this.changeStatus.bind(this, record.id, 2)}>结束</a>;
-          let sealDom = <a href="javascript:void(0)" className="col-red" onClick={this.changeStatus.bind(this, record.id, 3)}>封禁</a>;
-          let unseal = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}>解封</a>;
-          let openDom = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}>打开</a>;
+          const { status,id } = record;
+          let endDom = <a href="javascript:void(0)" className="col-grey" onClick={this.changeStatus.bind(this, record.id, 2)}> 结束 </a>;
+          let sealDom = <a href="javascript:void(0)" className="col-red" onClick={this.changeStatus.bind(this, record.id, 3)}> 封禁 </a>;
+          let unsealDom = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}> 解封 </a>;
+          let openDom = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}> 打开 </a>;
+          let seeCommentDom =  <Link to={`/back/comment/${id}`}>查看评论</Link>
           let result = '';
           if (status === 1) {
-            result = <p>{sealDom} {endDom}</p>;
+            result = <p>{sealDom} {endDom} {seeCommentDom}</p>;
           } else if (status === 2) {
             result = openDom;
           } else if (status === 3) {
-            result = unseal;
+            result = unsealDom;
           }
           return result;
         }

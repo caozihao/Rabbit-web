@@ -33,7 +33,7 @@ class SendMessageBoard extends Component {
 
   handleSubmit = (e) => {
     const { userInfo } = this.state;
-    const { postId,postTitle } = this.props;
+    const { postId,postTitle,publishUserId,publishUserNickname } = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -41,6 +41,8 @@ class SendMessageBoard extends Component {
         values.userNickname = userInfo.nickname;
         values.postId = postId;
         values.postTitle = postTitle;
+        values.publishUserId = publishUserId;
+        values.publishUserNickname = publishUserNickname;
         this.props.publish(values);
         this.props.form.resetFields();
       }

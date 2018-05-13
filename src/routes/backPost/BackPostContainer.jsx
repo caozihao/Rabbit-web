@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { message } from 'antd';
-import { pageSize as defaultPageSize } from '../../config/config';
+import { backPageSize as pageSize  } from '../../config/config';
 import BackMainLayout from '../../components/layout/BackMainLayout.jsx';
 import BackPostPage from './BackPostPage';
 
@@ -29,7 +29,7 @@ class BackPostContainer extends Component {
       }
 
       if (!values.pageSize) {
-        values.pageSize = defaultPageSize;
+        values.pageSize = pageSize;
       }
 
       this.props.dispatch({

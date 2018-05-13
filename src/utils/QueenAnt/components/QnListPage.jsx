@@ -89,7 +89,7 @@ class QnListPage extends Component {
               handlePageSizeChange={handlePageChange}
               rowKey={rowKey}
               defaultColumnValues={defaultColumnValues}
-              defaultPageSize={this.props.defaultPageSize}
+              pageSize={this.props.pageSize}
               otherProps={this.props.otherTableProps}
               {...this.props.otherQnTableProps}
             />
@@ -127,7 +127,7 @@ QnListPage.defaultProps = {
   total: -1,
   rowKey: item => item.id,
   handlePageChange: () => { },
-  defaultPageSize: 10,
+  pageSize: 10,
   // defaultColumnValues: [],
 
   // 表格汇总列相关

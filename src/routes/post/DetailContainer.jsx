@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { message } from 'antd';
 import Page from './detail/Page';
-import { pageSize as defaultPageSize } from '../../config/config';
+import { pageSize as pageSize } from '../../config/config';
 import utils from '../../utils/QueenAnt/utils/utils';
 import MainLayout from '../../components/layout/MainLayout.jsx';
 import { routerRedux } from 'dva/router';
@@ -12,7 +12,6 @@ import { routerRedux } from 'dva/router';
 class MainContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.id = utils.getIdFromLocation(this.props.location, '/detail/:id');
     this.state = {
       commonList: [],
@@ -73,13 +72,15 @@ class MainContainer extends Component {
   getListByOffset = (values) => {
     if (values) {
 
+       values.status = 1;
+
       values.postId = this.id;
       if (!values.pageNo) {
         values.pageNo = 1;
       }
 
       if (!values.pageSize) {
-        values.pageSize = defaultPageSize;
+        values.pageSize = pageSize;
       }
 
       this.props.dispatch({

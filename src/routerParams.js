@@ -97,8 +97,15 @@ export default [
     ],
     page: () => import('./routes/backPost/BackPostContainer.jsx'),
   },
-  {
+    {
     path: '/back/comment',
+    models: () => [
+      ...commonModels(),
+    ],
+    page: () => import('./routes/backComment/BackCommentContainer.jsx'),
+  },
+  {
+    path: '/back/comment/:postId',
     models: () => [
       ...commonModels(),
     ],
