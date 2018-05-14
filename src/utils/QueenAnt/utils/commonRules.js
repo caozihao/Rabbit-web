@@ -66,7 +66,7 @@ const validateDict = {
   password: {
     pattern: /^[a-zA-Z0-9]*([a-zA-Z][0-9]|[0-9][a-zA-Z])[a-zA-Z0-9]*$/,
     message: {
-      CN: '不能是纯数字和纯字母',
+      CN: '并且不能是纯数字或纯字母',
       EN: `The password must contain a mix of letters and numbers`,
     }
   }
@@ -75,11 +75,11 @@ const otherMessageDict = {
   '密码': (item, len) => {
     return {
       max: {
-        CN: `${item} 不能超过 ${len} 字符`,
+        CN: `${item} 不能超过 ${len} 位`,
         EN: `The ${item} can't be greater than ${len} word`,
       },
       min: {
-        CN: `${item} 不能少于 ${len} 字符`,
+        CN: `${item} 不能少于 ${len} 位`,
         EN: `The ${item} can't be less than ${len} word`,
       },
       same: {

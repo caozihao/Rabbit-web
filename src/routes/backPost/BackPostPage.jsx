@@ -177,7 +177,7 @@ class BackPostPage extends Component {
                 <Option value="">全部</Option>
                 <Option value="1">发布中</Option>
                 <Option value="2">已结束</Option>
-                <Option value="3">已下架</Option>
+                <Option value="3">已封禁</Option>
               </Select>
             </Col>
             <Col span={4}>位置：

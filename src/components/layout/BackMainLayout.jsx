@@ -76,6 +76,7 @@ class BackMainLayout extends Component {
               type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
+             <Link to="/back" className="logout-link">退出</Link>
           </Header>
           <Content>{this.props.children}</Content>
         </Layout>

@@ -26,7 +26,7 @@ class HelpPage extends Component {
             <p><span className="paragraph-space" />失物招领模块：此模块实现对招领物品的展示列表功能和查看详细情况功能。</p>
             <p><span className="paragraph-space" />发布模块：此模块可以实现发布招领和报失物品的功能。</p>
             <p><span className="paragraph-space" />留言模块：捡拾到物品的师生可以在物品详情页里给失主留言物品的详细情况比如放置在哪里等等。</p>
-
+            <p><span className="paragraph-space" /><b>管理员联系邮箱：</b><b>zmx@162.com</b></p>
           </Col >
         </Row >
       </Card >
