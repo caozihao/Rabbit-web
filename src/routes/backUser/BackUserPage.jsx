@@ -110,7 +110,7 @@ class BackUserPage extends Component {
             <Col span={6}> 昵称：
             <Input onChange={this.handleChangeInput.bind(this, 'nickname')} style={{ width: 200 }} />
             </Col>
-            <Col span={3}>状态：
+            <Col span={4}>状态：
                <Select defaultValue=""
                 style={{ width: 100 }}
                 showSearch={true}

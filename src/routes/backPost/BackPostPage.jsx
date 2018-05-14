@@ -144,8 +144,8 @@ class BackPostPage extends Component {
     return (
       <div className="BackPostPage com-margin-top">
         <Card hoverable title="筛选条件">
-          <Row>
-            <Col span={3}>类型：
+          <Row style={{ lineHeight: 3 }}>
+            <Col span={4}>类型：
                <Select defaultValue=""
                 style={{ width: 100 }}
                 showSearch={true}
@@ -157,7 +157,7 @@ class BackPostPage extends Component {
                 <Option value="receive">招领</Option>
               </Select>
             </Col>
-            <Col span={4}>物品类别：
+            <Col span={5}>物品类别：
                <Select defaultValue=""
                 style={{ width: 120 }}
                 showSearch={true}
@@ -167,7 +167,7 @@ class BackPostPage extends Component {
                 {postOption}
               </Select>
             </Col>
-            <Col span={3}>状态：
+            <Col span={4}>状态：
                <Select defaultValue=""
                 style={{ width: 100 }}
                 showSearch={true}
@@ -180,14 +180,14 @@ class BackPostPage extends Component {
                 <Option value="3">已下架</Option>
               </Select>
             </Col>
-            <Col span={8}>丢失时间：
+            <Col span={4}>位置：
+            <Input onChange={this.handleChangeInput} style={{ width: 120 }} />
+            </Col>
+            <Col span={11}>丢失时间：
             <RangePicker
                 showTime
                 format="YYYY-MM-DD HH:mm:ss"
                 placeholder={["请输入起始日期", "请输出截止日期"]} onChange={this.handleChangeRangePicker} />
-            </Col>
-            <Col span={3}>位置：
-            <Input onChange={this.handleChangeInput} style={{ width: 120 }} />
             </Col>
             <Col span={2}>
               <Button type="primary" onClick={this.getListByOffset}>搜索</Button>
