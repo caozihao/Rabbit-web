@@ -8,6 +8,7 @@ import CommonFooter from './CommonFooter.jsx';
 import HeadCarousel from './HeadCarousel.jsx';
 import Statistics from './Statistics.jsx';
 import constant from '../../config/constant';
+import { Link } from 'dva/router';
 import './MainLayout.scss';
 
 const { Header, Content } = Layout;
@@ -47,6 +48,7 @@ class MainLayout extends Component {
 
         <Header >
           <TopNav location={this.props.location} />
+         
         </Header>
         <div className="main-content">
           {
