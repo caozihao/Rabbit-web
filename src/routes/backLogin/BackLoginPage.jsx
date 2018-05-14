@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Input, Form, Button, Icon } from 'antd';
 import commonRules from '../../utils/QueenAnt/utils/commonRules';
+import {debugMode } from '../../config/config';
 import './BackLoginPage.scss'
 
 const FormItem = Form.Item;
@@ -19,9 +20,8 @@ class BackLoginPage extends Component {
         sm: { span: 10 },
       },
     };
-
   }
-
+  
   componentDidMount() {
 
   }
@@ -49,7 +49,7 @@ class BackLoginPage extends Component {
           <Form onSubmit={this.handleSubmit} >
             <FormItem>
               {getFieldDecorator('phone', {
-                initialValue: 'admin',
+                initialValue: '',
                 rules: [
                   {
                     required: true, message: commonRules.requireMessage('require', '用户名'),
@@ -65,7 +65,7 @@ class BackLoginPage extends Component {
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
-                initialValue: 'admin',
+                initialValue: '',
                 rules: [
                   {
                     required: true, message: commonRules.requireMessage('require', '密码')

@@ -233,7 +233,7 @@ class PostReleasePage extends Component {
                   initialValue: title,
                   rules: [
                     {
-                      required: true, message: commonRules.requireMessage('require', '文章标题'),
+                      required: true, message: commonRules.requireMessage('require', '标题'),
                     },
                   ],
                 })(
@@ -303,7 +303,7 @@ class PostReleasePage extends Component {
                   initialValue: goodsPlace,
                   rules: [
                     {
-                      required: true, message: commonRules.requireMessage('require', '拾取地点'),
+                      required: true, message: commonRules.requireMessage('require', '地点'),
                     },
                   ],
                 })(
@@ -321,7 +321,7 @@ class PostReleasePage extends Component {
                   initialValue: content,
                   rules: [
                     {
-                      required: true, message: commonRules.requireMessage('require', 'content'),
+                      message: commonRules.requireMessage('require', '备注'),
                     },
                   ],
                 })(
