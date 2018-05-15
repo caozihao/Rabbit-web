@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Table, Row, Col, Input, Button, Select } from 'antd';
 import enumerateConstant from '../../config/enumerateConstant';
-import { pageSize } from '../../config/config';
+import { backPageSize as pageSize } from '../../config/config';
 import TableParams from './TableParams';
 import "./BackUserPage.scss";
 import utils from '../../utils/QueenAnt/utils/utils';
