@@ -125,7 +125,7 @@ class BackCommentPage extends Component {
             <Col span={5}>发布人：
             <Input onChange={this.handleChangeInput.bind(this,'publishUserNickname')} style={{ width: 150 }} />
             </Col>
-            <Col span={5}>评论人：
+            <Col span={5}>留言者：
             <Input onChange={this.handleChangeInput.bind(this,'userNickname')} style={{ width: 150 }} />
             </Col>
             <Col span={7}>帖子标题：

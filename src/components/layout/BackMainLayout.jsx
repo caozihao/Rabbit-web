@@ -65,7 +65,7 @@ class BackMainLayout extends Component {
               <Link to='/back/post'><Icon type="gift" />帖子管理</Link>
             </Menu.Item>
             <Menu.Item key="/back/comment" >
-              <Link to='/back/comment'> <Icon type="smile-o" />评论管理</Link>
+              <Link to='/back/comment'> <Icon type="smile-o" />留言管理</Link>
             </Menu.Item>
           </Menu>
         </Sider>

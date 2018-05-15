@@ -42,7 +42,7 @@ class BackPostPage extends Component {
           let sealDom = <a href="javascript:void(0)" className="col-red" onClick={this.changeStatus.bind(this, record.id, 3)}> 封禁 </a>;
           let unsealDom = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}> 解封 </a>;
           let openDom = <a href="javascript:void(0)" className="col-green" onClick={this.changeStatus.bind(this, record.id, 1)}> 打开 </a>;
-          let seeCommentDom =  <Link to={`/back/comment/${id}`}>查看评论</Link>
+          let seeCommentDom =  <Link to={`/back/comment/${id}`}>查看留言</Link>
           let result = '';
           if (status === 1) {
             result = <p>{sealDom} {endDom} {seeCommentDom}</p>;

@@ -24,7 +24,7 @@ class SimpleBref extends Component {
       <Card className="Statistics" title={<b>简要信息</b>}>
         <p>一共有<span className="important"> {userTotal} </span>位注册用户</p>
         <p>一共发布了<span className="important"> {searchTotal} </span>条寻物启事，<span className="important"> {receiveTotal} </span>条失物招领</p>
-        <p>一共发表了<span className="important"> {commentTotal} </span>条评论</p>
+        <p>一共发表了<span className="important"> {commentTotal} </span>条留言</p>
       </Card>
     );
   }

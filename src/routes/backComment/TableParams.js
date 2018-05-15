@@ -18,7 +18,7 @@ export default [
     key: 'publishUserNickname',
   }, 
     {
-    title: '评论人',
+    title: '留言者',
     dataIndex: 'userNickname',
     key: 'userNickname',
      render: (text, record) => {
