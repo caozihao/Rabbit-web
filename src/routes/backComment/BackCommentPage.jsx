@@ -110,7 +110,7 @@ class BackCommentPage extends Component {
       <div className="BackCommentPage com-margin-top">
         <Card hoverable title="筛选条件">
           <Row>
-            <Col span={3}>状态：
+            <Col span={4}>状态：
                <Select defaultValue=""
                 style={{ width: 100 }}
                 showSearch={true}
@@ -122,13 +122,13 @@ class BackCommentPage extends Component {
                 <Option value="2">已屏蔽</Option>
               </Select>
             </Col>
-            <Col span={4}>发布人：
+            <Col span={5}>发布人：
             <Input onChange={this.handleChangeInput.bind(this,'publishUserNickname')} style={{ width: 150 }} />
             </Col>
-            <Col span={4}>评论人：
+            <Col span={5}>评论人：
             <Input onChange={this.handleChangeInput.bind(this,'userNickname')} style={{ width: 150 }} />
             </Col>
-            <Col span={6}>帖子标题：
+            <Col span={7}>帖子标题：
             <Input onChange={this.handleChangeInput.bind(this,'postTitle')} style={{ width: 200 }} />
             </Col>
             <Col span={2}>
